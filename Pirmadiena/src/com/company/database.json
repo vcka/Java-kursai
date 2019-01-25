@@ -1,0 +1,32 @@
+{
+	"artists":[
+		{"name":"Freddy",
+		"Lastname":"Mercury",
+		"birthdate": "1946/09/05",
+		"deathdate": "1991/11/24",
+		"albums":[
+			{
+				"title":"A Night at the Opera",
+				"year": 1975,
+				"songcount": 7,
+				"photo":"https://upload.wikimedia.org/wikipedia/lt/thumb/4/4d/Queen_A_Night_At_The_Opera.png/400px-Queen_A_Night_At_The_Opera.png",
+				"songs": [
+					{"title" : "Death on Two Legs (Dedicated to…)",
+					"duration": "3:43"},
+					{"title" : "Lazing on a Sunday Afternoon",
+					"duration": "1:08"},
+					{"title" : "I’m in Love with My Car",
+					"duration": "3:05"},
+					{"title" : "You’re My Best Friend",
+					"duration": "2:50"},
+					{"title" : "'39",
+					"duration": "3:25"},
+					{"title" : "Sweet Lady",
+					"duration": "4:01"},
+					{"title" : "Seaside Rendezvous",
+					"duration": "2:13"}]
+			}
+		]
+		}
+	]
+}
