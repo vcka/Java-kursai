@@ -3,7 +3,19 @@ package com.company;
 abstract class Person {
     private int personalID;
     private String name;
-    private String gender;
+    private Gender gender;
+    private EmploymentStatus employed;
+
+    public Person(int personalID, String name, Gender gender, EmploymentStatus employed) {
+        this.personalID = personalID;
+        this.name = name;
+        this.gender = gender;
+        this.employed = employed;
+    }
+
+    public EmploymentStatus getEmployed() {
+        return employed;
+    }
 
     public int getPersonalID() {
         return personalID;
@@ -13,7 +25,7 @@ abstract class Person {
         this.personalID = personalID;
     }
 
-    public String getName() {
+        public String getName() {
         return name;
     }
 
@@ -21,11 +33,8 @@ abstract class Person {
         this.name = name;
     }
 
-    public String getGender() {
+    public Gender getGender() {
         return gender;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
 }

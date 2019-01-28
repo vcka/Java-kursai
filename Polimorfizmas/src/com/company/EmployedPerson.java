@@ -1,13 +1,12 @@
 package com.company;
 
-abstract class EmployedPerson extends PrivatePerson {
-    @Override
-    void getEmploymentStatus() {
-
+public class EmployedPerson extends PrivatePerson {
+    public EmployedPerson(int personalID, String name, Gender gender, EmploymentStatus employed) {
+        super(personalID, name, gender, employed);
     }
 
     @Override
-    public int getPersonalID() {
-        return super.getPersonalID();
+    void getEmploymentStatus() {
+
     }
 }
