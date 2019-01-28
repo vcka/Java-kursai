@@ -37,4 +37,13 @@ abstract class Person {
         return gender;
     }
 
+    @Override
+    public String toString() {
+        return "Person{" +
+                "personalID=" + personalID +
+                ", name='" + name + '\'' +
+                ", gender=" + gender +
+                ", employed=" + employed +
+                '}';
+    }
 }

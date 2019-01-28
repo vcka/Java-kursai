@@ -10,8 +10,8 @@ abstract class PrivatePerson extends Person {
     abstract void getEmploymentStatus();
 
     static Person of(int personalID, String name, Gender gender, EmploymentStatus employed) {
-        if (employed.equals("EMPLOYED")) {
-            return new EmployedPerson(personalID, name, gender, employed);
+        if (employed.equals(EmploymentStatus.EMPLOYED)) {
+            return new EmployedPerson(name, gender, personalID, employed);
         } else {
             return new UnemployedPerson(name, gender, personalID, employed);
         }
