@@ -12,8 +12,9 @@ public class Monitoring {
         for (Device d : devices) {
             try {
                 Device.ping(d);
+                System.out.println(d.toString());
             }catch (DeviceIsOffException e){
-
+                //System.out.println(d.toString());
             }
 
         }

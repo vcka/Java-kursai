@@ -32,9 +32,9 @@ public class Device {
             if (!d.isOn) {throw new DeviceIsOffException();
             }
         }catch (DeviceIsOffException e) {
-            e.printStackTrace();
+            System.out.printf("Device is off");
         }
-        System.out.println(d.toString());
+//        System.out.println(d.toString());
     }
 
     @Override
