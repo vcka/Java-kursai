@@ -2,21 +2,17 @@ package com.company;
 
 import java.util.List;
 
-public class Monitoring {
+class Monitoring {
 
-    public Monitoring() {
-    }
-
-    public void pingAllDevices(List<Device> devices) {
+    void pingAllDevices(List<Device> devices) {
         System.out.println("-----Pinging started-----");
         for (Device d : devices) {
             try {
-                Device.ping(d);
-                System.out.println(d.toString());
-            }catch (DeviceIsOffException e){
-                //System.out.println(d.toString());
+                d.ping();
+                System.out.println(String.format("Device %s with id %d is ON.", d.getClass().getSimpleName(), d.getId()));
+            } catch (DeviceIsOffException e) {
+                System.out.println(String.format("Device %s with id %d is OFF.", d.getClass().getSimpleName(), d.getId()));
             }
-
         }
         System.out.println("-----Pinging finished----");
     }
