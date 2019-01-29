@@ -13,6 +13,12 @@ abstract class Person {
         this.employed = employed;
     }
 
+    public Person(int personalID, String name, EmploymentStatus employed) {
+        this.personalID = personalID;
+        this.name = name;
+        this.employed = employed;
+    }
+
     public EmploymentStatus getEmployed() {
         return employed;
     }
