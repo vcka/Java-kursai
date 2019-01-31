@@ -3,10 +3,7 @@ package com.company;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -14,7 +11,7 @@ import java.util.*;
 
 public class Main {
 
-    public static void main(String[] args) throws IOException, URISyntaxException {
+    public static void main(String[] args) throws IOException{
 
         Path filePeople = Paths.get(System.getProperty("user.dir"), "people.txt");
         Path filePayment = Paths.get(System.getProperty("user.dir"), "payments.txt");
@@ -46,11 +43,12 @@ public class Main {
             e.printStackTrace();
         }
 
-        Path resultPath = Paths.get(System.getProperty("user.dir"), "resultRecieved.txt");
+        Path resultPath = Paths.get(System.getProperty("user.dir"), "resultReceived.txt");
         Path resultPath2 = Paths.get(System.getProperty("user.dir"), "resultSent.txt");
         if (Files.exists(resultPath)) {
             Files.delete(resultPath);
-        } else if (Files.exists(resultPath2)) {
+        }
+        if (Files.exists(resultPath2)) {
             Files.delete(resultPath2);
         }
         Files.createFile(resultPath);
@@ -68,7 +66,8 @@ public class Main {
         }
         try (BufferedWriter writer = Files.newBufferedWriter(resultPath2)) {
             List<Person> list = new ArrayList(people.values());
-            Collections.sort(list, Comparator.comparing(Person::getSentMoney));
+//            Collections.sort(list, Comparator.comparing(Person::getSentMoney));
+            Collections.sort(list, Comparator.comparing((Person person)->person.getSentMoney()));
             Collections.reverse(list);
 
             for (Person person : list) {
