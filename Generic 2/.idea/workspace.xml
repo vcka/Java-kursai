@@ -1,20 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d1965e98-615c-4d52-a755-bbe6b2848211" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/com/company/Azuolas.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/company/Berzas.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/company/Egle.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/company/Kadagys.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/company/Lapuotis.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/company/Medis.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/company/Pusis.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/company/Spygliuotis.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Generics 1/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Medis/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Failai-namai/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Failai-namai/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Medis/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Medis/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="d1965e98-615c-4d52-a755-bbe6b2848211" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,6 +13,7 @@
     <session id="-949849948">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="1" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.opened" value="1" />
         </counts>
@@ -191,7 +179,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="y" value="24" />
     <option name="width" value="400" />
     <option name="height" value="530" />
@@ -231,7 +219,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548963393550" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548963419871" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../Medis" />
   </component>
   <component name="RunDashboard">
@@ -277,8 +265,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
       <window_info id="Image Layers" />
