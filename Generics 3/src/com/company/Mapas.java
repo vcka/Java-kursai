@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class Mapas <A> {
+public class Mapas {
     List<Mapas> sarasasPoru;
 
 
@@ -12,9 +12,9 @@ public class Mapas <A> {
         this.sarasasPoru = sarasasPoru;
     }
 
-public <K, V> void ideti(p2){
-        sarasasPoru.add(k,v);
+//public <K, V> void ideti(p2){
+//        sarasasPoru.add(k,v);
 }
 
 
-}
+
