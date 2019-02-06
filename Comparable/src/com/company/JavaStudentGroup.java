@@ -18,7 +18,7 @@ public class JavaStudentGroup {
         System.out.println("Groups:");
         for (int start = 0; start < students.size(); start += size) {
             int end = Math.min(start + size, students.size());
-            System.out.println(size);
+//            System.out.println(size);
             List<Student> sublist = students.subList(start, end);
             System.out.println(sublist);
         }

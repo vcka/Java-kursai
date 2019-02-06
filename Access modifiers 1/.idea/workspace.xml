@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="9e32bf07-bd40-4200-8d4b-6d32e4081f8b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/A/A.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/BCD/B.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/BCD/C.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/BCD/D.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Generics 3/src/com/company/DnsProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Generics 3/src/com/company/DnsServer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Generics 3/src/com/company/Programa.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Comparable/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Comparable/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Comparable/out/production/Comparable/com/company/JavaStudentGroup.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Comparable/out/production/Comparable/com/company/JavaStudentGroup.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Comparable/out/production/Comparable/com/company/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Comparable/out/production/Comparable/com/company/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Comparable/src/com/company/JavaStudentGroup.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Comparable/src/com/company/JavaStudentGroup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Comparable/src/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Comparable/src/com/company/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Generics 3/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Generics 3/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Generics 3/out/production/Generics 3/com/company/Mapas.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Generics 3/out/production/Generics 3/com/company/Mapas.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Generics 3/out/production/Generics 3/com/company/Pora.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Generics 3/out/production/Generics 3/com/company/Pora.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Generics 3/src/com/company/Mapas.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Generics 3/src/com/company/Mapas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Generics 3/src/com/company/Pora.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Generics 3/src/com/company/Pora.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stream 2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Stream 2/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stream 2/out/production/Stream 2/DefaultShopService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Stream 2/out/production/Stream 2/DefaultShopService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stream 2/out/production/Stream 2/Employee.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Stream 2/out/production/Stream 2/Employee.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stream 2/out/production/Stream 2/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Stream 2/out/production/Stream 2/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stream 2/out/production/Stream 2/ShopService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Stream 2/out/production/Stream 2/ShopService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stream 2/src/DefaultShopService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Stream 2/src/DefaultShopService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stream 2/src/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Stream 2/src/Employee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stream 2/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Stream 2/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stream 2/src/ShopService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Stream 2/src/ShopService.java" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/out/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="-526995488">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.3" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="JAVA" value="5" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="JAVA" value="753" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/BCD/B.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="14" column="5" selection-start-line="12" selection-start-column="4" selection-end-line="14" selection-end-column="5" />
+              <folding>
+                <element signature="e#99#100#0" expanded="true" />
+                <element signature="e#132#133#0" expanded="true" />
+                <element signature="e#149#150#0" expanded="true" />
+                <element signature="e#182#183#0" expanded="true" />
+                <element signature="e#209#210#0" expanded="true" />
+                <element signature="e#242#243#0" expanded="true" />
+                <element signature="e#264#265#0" expanded="true" />
+                <element signature="e#290#291#0" expanded="true" />
+                <element signature="e#321#322#0" expanded="true" />
+                <element signature="e#347#348#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/BCD/C.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
+              <folding>
+                <element signature="e#65#66#0" expanded="true" />
+                <element signature="e#93#94#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/A/A.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="14" selection-start-line="14" selection-end-line="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/BCD/D.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" column="28" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/BCD/D.java" />
+        <option value="$PROJECT_DIR$/src/BCD/B.java" />
+        <option value="$PROJECT_DIR$/src/BCD/C.java" />
+        <option value="$PROJECT_DIR$/src/A/A.java" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="y" value="24" />
+    <option name="width" value="400" />
+    <option name="height" value="530" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Access modifiers 1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Access modifiers 1" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Access modifiers 1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Access modifiers 1" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Access modifiers 1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Access modifiers 1" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="A" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Access modifiers 1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Access modifiers 1" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="BCD" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549476828790" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="Unnamed" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="A.A" />
+      <module name="Access modifiers 1" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9e32bf07-bd40-4200-8d4b-6d32e4081f8b" name="Default Changelist" comment="" />
+      <created>1549474611853</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1549474611853</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <layout>
+      <window_info id="Favorites" side_tool="true" />
+      <window_info id="Image Layers" />
+      <window_info id="Designer" />
+      <window_info id="UI Designer" />
+      <window_info id="Capture Tool" />
+      <window_info id="Learn" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Messages" />
+      <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.329718" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Palette" />
+      <window_info anchor="right" id="Theme Preview" />
+      <window_info anchor="right" id="Capture Analysis" />
+      <window_info anchor="right" id="Palette&#9;" />
+      <window_info anchor="right" id="Key Promoter X" />
+      <window_info anchor="right" id="Maven Projects" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/BCD/D.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="28" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/BCD/C.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
+          <folding>
+            <element signature="e#65#66#0" expanded="true" />
+            <element signature="e#93#94#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/BCD/B.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="5" selection-start-line="12" selection-start-column="4" selection-end-line="14" selection-end-column="5" />
+          <folding>
+            <element signature="e#99#100#0" expanded="true" />
+            <element signature="e#132#133#0" expanded="true" />
+            <element signature="e#149#150#0" expanded="true" />
+            <element signature="e#182#183#0" expanded="true" />
+            <element signature="e#209#210#0" expanded="true" />
+            <element signature="e#242#243#0" expanded="true" />
+            <element signature="e#264#265#0" expanded="true" />
+            <element signature="e#290#291#0" expanded="true" />
+            <element signature="e#321#322#0" expanded="true" />
+            <element signature="e#347#348#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/A/A.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>
