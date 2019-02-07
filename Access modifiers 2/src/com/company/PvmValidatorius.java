@@ -10,20 +10,19 @@ public class PvmValidatorius {
     private int r2;
     private int c9;
 
-    public void tikrintiPVMkoda(IntStream numbers) {
-        if(pvmChecker(numbers)){
+    final void tikrintiPVMkoda(IntStream numbers) {
+        if (pvmChecker(numbers)) {
             System.out.println("PVM moketojo kodas yra teisingas");
-        }else {
+        } else {
             System.out.println("PVM moketojo kodas yra neteisingas");
         }
     }
 
-    public IntStream enterCode() {
+    final IntStream enterCode() {
         return code();
     }
 
     private boolean pvmChecker(IntStream numbers) {
-
         //A1 A2
         int[] numbersArray = numbers.toArray();
         if (numbersArray[7] == 1) {
@@ -50,21 +49,18 @@ public class PvmValidatorius {
                 }
             }
         }
-//        if (c9 == numbersArray[8]) return true;
         return c9 == numbersArray[8];
     }
 
     private IntStream code() {
         Scanner sc = new Scanner(System.in);
-        String number;
         System.out.println("Iveskite 9 skaiciu pvm koda:");
-        number = sc.nextLine();
+        String number = sc.nextLine();
         while (number.length() != 9 || !number.chars().allMatch(Character::isDigit)) {
             System.out.println("Neteisingai ivestas kodas! Bandykite dar karta.");
             number = sc.next();
         }
         sc.close();
-        IntStream numbers = number.chars().map(Character::getNumericValue);
-        return numbers;
+        return number.chars().map(Character::getNumericValue);
     }
 }
