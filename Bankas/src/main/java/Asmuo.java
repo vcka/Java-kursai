@@ -23,15 +23,6 @@ public class Asmuo {
     }
 
     @Override
-    public String toString() {
-        return "Asmuo{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", lastName='" + lastName + '\'' +
-                '}';
-    }
-
-    @Override
     public int hashCode() {
         return super.hashCode();
     }

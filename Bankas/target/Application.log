@@ -1,0 +1,30 @@
+23:31:16.316 [main] INFO  BankoSaskaita - Ieskoma asmens Jonas Kaukas banko saskaitos
+23:31:16.400 [main] INFO  BankoSaskaita - Sukurta banko saskaita nr. LT609796353518010476 asmeniui Jonas Kaukas
+23:31:16.400 [main] INFO  BankoSaskaita - Ieskoma asmens Vardenis Pavardenis banko saskaitos
+23:31:16.400 [main] INFO  BankoSaskaita - Sukurta banko saskaita nr. LT402539868957043580 asmeniui Vardenis Pavardenis
+23:31:16.416 [main] INFO  BankoSaskaita - Ieskoma asmens Jonas Kaukas banko saskaitos
+23:31:16.416 [main] INFO  BankoSaskaita - Ieskoma asmens Jonas Kaukas banko saskaitos
+23:31:16.416 [main] INFO  BankoSaskaita - Ieskoma asmens Vardenis Pavardenis banko saskaitos
+23:31:16.416 [main] INFO  BankoSaskaita - Ieskoma asmens Vardenis Pavardenis banko saskaitos
+23:31:16.416 [main] INFO  BankoSaskaita - I saskaita LT402539868957043580 ideta 13.524037285770797$
+23:31:16.416 [main] INFO  BankoSaskaita - Ieskoma asmens Jonas Kaukas banko saskaitos
+23:31:16.416 [main] INFO  BankoSaskaita - I saskaita LT609796353518010476 ideta 2000.0€
+23:31:16.416 [main] INFO  BankoSaskaita - Ieskoma asmens Jonas Kaukas banko saskaitos
+23:31:16.416 [main] INFO  BankoSaskaita - Ieskoma asmens Jonas Kaukas banko saskaitos
+23:31:16.416 [main] INFO  BankoSaskaita - Ieskoma asmens Nulis Pinigu banko saskaitos
+23:31:16.416 [main] INFO  BankoSaskaita - -----------------------------------
+23:31:16.416 [main] INFO  BankoSaskaita - SASKAITU DUOMENYS:
+23:31:16.416 [main] INFO  BankoSaskaita - 
+23:31:16.416 [main] INFO  BankoSaskaita - Saskaitos nr.: LT609796353518010476
+23:31:16.416 [main] INFO  BankoSaskaita - Vardas: Jonas
+23:31:16.416 [main] INFO  BankoSaskaita - Pavarde: Kaukas
+23:31:16.416 [main] INFO  BankoSaskaita - Valiuta: €
+23:31:16.416 [main] INFO  BankoSaskaita - Likutis: 1999.2691
+23:31:16.416 [main] INFO  BankoSaskaita - -----------------------------------
+23:31:16.416 [main] INFO  BankoSaskaita - SASKAITU DUOMENYS:
+23:31:16.416 [main] INFO  BankoSaskaita - 
+23:31:16.416 [main] INFO  BankoSaskaita - Saskaitos nr.: LT402539868957043580
+23:31:16.416 [main] INFO  BankoSaskaita - Vardas: Vardenis
+23:31:16.416 [main] INFO  BankoSaskaita - Pavarde: Pavardenis
+23:31:16.416 [main] INFO  BankoSaskaita - Valiuta: $
+23:31:16.416 [main] INFO  BankoSaskaita - Likutis: 1013.5240372857708

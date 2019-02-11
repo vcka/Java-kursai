@@ -9,22 +9,10 @@ public class Main {
         bankoSaskaita.sukurtiBankoSaskaita(asmuo1, 100, Currency.€);
         bankoSaskaita.sukurtiBankoSaskaita(asmuo2, 1000, Currency.$);
 
-        System.out.println(bankoSaskaita);
-        System.out.println(bankoSaskaita.getId(asmuo2));
-
-        System.out.println(bankoSaskaita.gautiAsmensSaskaitosLikuti(asmuo1));
-        System.out.println(bankoSaskaita.gautiAsmensSaskaitosLikuti(asmuo2));
-
-        bankoSaskaita.pervestiPinigus(asmuo1, asmuo2, 12, Currency.€);
-
-        System.out.println(bankoSaskaita.gautiAsmensSaskaitosLikuti(asmuo1));
-        System.out.println(bankoSaskaita.gautiAsmensSaskaitosLikuti(asmuo2));
+        bankoSaskaita.pervestiPinigus(asmuo1, asmuo2, 1200, Currency.€);
 
         bankoSaskaita.inestiPiniguISaskaita(asmuo1, 2000);
-        bankoSaskaita.pervestiPinigus(asmuo1, asmuo3, 100, Currency.$);
-
-        System.out.println(bankoSaskaita.gautiAsmensSaskaitosLikuti(asmuo1));
-        System.out.println(bankoSaskaita.gautiAsmensSaskaitosLikuti(asmuo2));
+        bankoSaskaita.pervestiPinigus(asmuo2, asmuo1, 100, Currency.$);
 
         bankoSaskaita.spausdintiSaskaituDuomenis();
 
