@@ -34,7 +34,7 @@ public class Bankas {
         }
         if (gautiAsmensSaskaitosLikuti(siunejas) >= sum) {
             try {
-                gautiBankoSaskaita(siunejas).nuskaiciuot(sum * currency.getRate() / gautiBankoSaskaita(siunejas).getCurrency().getRate());
+                gautiBankoSaskaita(siunejas).nuskaiciuoti(sum * currency.getRate() / gautiBankoSaskaita(siunejas).getCurrency().getRate());
                 gautiBankoSaskaita(gavejas).ideti(sum * currency.getRate() / gautiBankoSaskaita(gavejas).getCurrency().getRate());
             } catch (SaskaitaNerastaException e) {
                 LOG.info("Nera tokios saskaitos");

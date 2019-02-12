@@ -4,6 +4,9 @@ import org.apache.logging.log4j.Logger;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 public class BankoSaskaita {
     private static final Logger LOG = LogManager.getLogger(BankoSaskaita.class);
@@ -11,6 +14,7 @@ public class BankoSaskaita {
     private String accountNr;
     private double balance;
     private Currency currency;
+    public List<String> accounts = new ArrayList<>();
 
     public BankoSaskaita(Asmuo accountHolder, double balance, Currency currency) {
         this.accountNr = generateAccount();
@@ -28,7 +32,7 @@ public class BankoSaskaita {
         LOG.info("I saskaita {} ideta {}{}", getAccountNr(), new BigDecimal(sum).setScale(2, RoundingMode.HALF_UP).doubleValue(), getCurrency());
     }
 
-    public void nuskaiciuot(double sum){
+    public void nuskaiciuoti(double sum){
         LOG.info("Nuo saskaitos {} nuskaiciuojama suma: {}{}", getAccountNr(), new BigDecimal(sum).setScale(2, RoundingMode.HALF_UP).doubleValue(), getCurrency());
         if(getBalance()-sum>=0){
             this.balance=getBalance()-sum;
@@ -54,7 +58,13 @@ public class BankoSaskaita {
     }
 
     private String generateAccount(){
-        return "LT" + RandomStringUtils.randomNumeric(18);
+        String tempAccount = "LT" + RandomStringUtils.randomNumeric(18);
+        if(accounts.contains(tempAccount)){
+            LOG.info("Tokia saskaita jau yra, generuojama nauja.");
+            generateAccount();
+        }
+        accounts.add(tempAccount);
+        return tempAccount;
     }
 
     @Override
