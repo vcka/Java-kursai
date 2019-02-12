@@ -5072,3 +5072,45 @@
 12:05:49.410 [main] INFO  Bankas - Pavarde: Pavardenis
 12:05:49.410 [main] INFO  Bankas - Valiuta: $
 12:05:49.410 [main] INFO  Bankas - Likutis: 900.0
+17:53:52.164 [main] INFO  Bankas - Ieskoma asmens Jonas Kaukas banko saskaitos
+17:53:52.224 [main] INFO  Bankas - Saskaita LT523212053926179675 rasta
+17:53:52.224 [main] INFO  Bankas - Sukurta banko saskaita nr. LT523212053926179675 asmeniui Jonas Kaukas
+17:53:52.224 [main] INFO  Bankas - Ieskoma asmens Vardenis Pavardenis banko saskaitos
+17:53:52.224 [main] INFO  Bankas - Saskaita LT082528888246115155 rasta
+17:53:52.224 [main] INFO  Bankas - Sukurta banko saskaita nr. LT082528888246115155 asmeniui Vardenis Pavardenis
+17:53:52.224 [main] INFO  Bankas - Ieskoma asmens Jonas Kaukas banko saskaitos
+17:53:52.224 [main] INFO  Bankas - Saskaita LT523212053926179675 rasta
+17:53:52.224 [main] INFO  Bankas - Asmuo Jonas Kaukas siuncia 1200.0€ asmeniui Vardenis Pavardenis
+17:53:52.228 [main] INFO  Bankas - Pinigu suma virsija likuti
+17:53:52.228 [main] INFO  Bankas - Ieskoma asmens Jonas Kaukas banko saskaitos
+17:53:52.228 [main] INFO  Bankas - Saskaita LT523212053926179675 rasta
+17:53:52.240 [main] INFO  BankoSaskaita - I saskaita LT523212053926179675 ideta 2000.0€
+17:53:52.240 [main] INFO  Bankas - Ieskoma asmens Vardenis Pavardenis banko saskaitos
+17:53:52.240 [main] INFO  Bankas - Saskaita LT082528888246115155 rasta
+17:53:52.240 [main] INFO  Bankas - Asmuo Vardenis Pavardenis siuncia 100.0$ asmeniui Jonas Kaukas
+17:53:52.240 [main] INFO  Bankas - Ieskoma asmens Vardenis Pavardenis banko saskaitos
+17:53:52.240 [main] INFO  Bankas - Saskaita LT082528888246115155 rasta
+17:53:52.240 [main] INFO  Bankas - Ieskoma asmens Vardenis Pavardenis banko saskaitos
+17:53:52.240 [main] INFO  Bankas - Saskaita LT082528888246115155 rasta
+17:53:52.240 [main] INFO  BankoSaskaita - Nuo saskaitos LT082528888246115155 nuskaiciuojama suma: 100.0$
+17:53:52.240 [main] INFO  Bankas - Ieskoma asmens Jonas Kaukas banko saskaitos
+17:53:52.240 [main] INFO  Bankas - Saskaita LT523212053926179675 rasta
+17:53:52.240 [main] INFO  Bankas - Ieskoma asmens Jonas Kaukas banko saskaitos
+17:53:52.240 [main] INFO  Bankas - Saskaita LT523212053926179675 rasta
+17:53:52.242 [main] INFO  BankoSaskaita - I saskaita LT523212053926179675 ideta 88.73€
+17:53:52.242 [main] INFO  Bankas - -----------------------------------
+17:53:52.242 [main] INFO  Bankas - SASKAITU DUOMENYS:
+17:53:52.242 [main] INFO  Bankas - 
+17:53:52.242 [main] INFO  Bankas - Saskaitos nr.: LT523212053926179675
+17:53:52.242 [main] INFO  Bankas - Vardas: Jonas
+17:53:52.242 [main] INFO  Bankas - Pavarde: Kaukas
+17:53:52.242 [main] INFO  Bankas - Valiuta: €
+17:53:52.242 [main] INFO  Bankas - Likutis: 2189.0
+17:53:52.242 [main] INFO  Bankas - -----------------------------------
+17:53:52.242 [main] INFO  Bankas - SASKAITU DUOMENYS:
+17:53:52.242 [main] INFO  Bankas - 
+17:53:52.242 [main] INFO  Bankas - Saskaitos nr.: LT082528888246115155
+17:53:52.242 [main] INFO  Bankas - Vardas: Vardenis
+17:53:52.242 [main] INFO  Bankas - Pavarde: Pavardenis
+17:53:52.242 [main] INFO  Bankas - Valiuta: $
+17:53:52.244 [main] INFO  Bankas - Likutis: 900.0
