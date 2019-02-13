@@ -12,4 +12,14 @@ public class Uzklausa {
     public Uzklausa(String imonesKodas) {
         this.imonesKodas = imonesKodas;
     }
+
+    public Uzklausa() {
+    }
+
+    @Override
+    public String toString() {
+        return "Uzklausa{" +
+                "imonesKodas='" + imonesKodas + '\'' +
+                '}';
+    }
 }

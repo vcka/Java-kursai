@@ -2,17 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5abc5b93-3ff7-4fc6-829f-bc380bfb1db8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../bowling/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bowling/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bowling/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bowling/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bowling/bowling.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bowling/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bowling/src/main/java/BowlingGame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bowling/src/test/java/BowlingGameTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SerializeJSON-internetas/serveris/src/main/resources/log4j2.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application.log" beforeDir="false" afterPath="$PROJECT_DIR$/Application.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/BankoSaskaita.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/BankoSaskaita.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SerializeJSON-internetas/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SerializeJSON-internetas/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SerializeJSON-internetas/helper/src/main/java/Atsakymas.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SerializeJSON-internetas/helper/src/main/java/Atsakymas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SerializeJSON-internetas/helper/src/main/java/Uzklausa.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SerializeJSON-internetas/helper/src/main/java/Uzklausa.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SerializeJSON-internetas/helper/target/classes/Atsakymas.class" beforeDir="false" afterPath="$PROJECT_DIR$/../SerializeJSON-internetas/helper/target/classes/Atsakymas.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SerializeJSON-internetas/helper/target/classes/Uzklausa.class" beforeDir="false" afterPath="$PROJECT_DIR$/../SerializeJSON-internetas/helper/target/classes/Uzklausa.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SerializeJSON-internetas/narsykle/src/main/java/Narsykle.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SerializeJSON-internetas/narsykle/src/main/java/Narsykle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SerializeJSON-internetas/narsykle/target/classes/Narsykle.class" beforeDir="false" afterPath="$PROJECT_DIR$/../SerializeJSON-internetas/narsykle/target/classes/Narsykle.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SerializeJSON-internetas/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SerializeJSON-internetas/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SerializeJSON-internetas/serveris/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SerializeJSON-internetas/serveris/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SerializeJSON-internetas/serveris/src/main/java/Serveris.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SerializeJSON-internetas/serveris/src/main/java/Serveris.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -58,11 +59,11 @@
     <session id="-735310878">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="3" />
-          <entry key="project.open.time.1" value="1" />
+          <entry key="project.closed" value="4" />
+          <entry key="project.open.time.1" value="2" />
           <entry key="project.open.time.13" value="1" />
           <entry key="project.open.time.14" value="1" />
-          <entry key="project.opened" value="3" />
+          <entry key="project.opened" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -83,7 +84,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Bankas.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
+            <state relative-caret-position="272">
               <caret line="22" selection-start-line="22" selection-end-line="22" />
             </state>
           </provider>
@@ -107,8 +108,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/BankoSaskaita.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="833">
-              <caret line="67" column="5" selection-start-line="67" selection-start-column="5" selection-end-line="67" selection-end-column="5" />
+            <state relative-caret-position="17">
+              <caret line="1" selection-start-line="1" selection-end-line="2" selection-end-column="39" />
             </state>
           </provider>
         </entry>
@@ -245,7 +246,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Image Layers" order="0" />
@@ -270,7 +271,7 @@
       <window_info anchor="right" id="Capture Analysis" order="0" />
       <window_info anchor="right" id="Theme Preview" order="1" />
       <window_info anchor="right" id="Palette&#9;" order="2" />
-      <window_info anchor="right" id="Maven Projects" order="3" visible="true" weight="0.1444563" />
+      <window_info anchor="right" id="Maven Projects" order="3" visible="true" weight="0.14372164" />
       <window_info anchor="right" id="Palette" order="4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="5" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="6" weight="0.25" />
@@ -302,9 +303,15 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Bankas.iml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../officialidgenerator/src/main/java/Person.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Bankas.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
+        <state relative-caret-position="272">
           <caret line="22" selection-start-line="22" selection-end-line="22" />
         </state>
       </provider>
@@ -339,16 +346,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Bankas.iml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../officialidgenerator/src/main/java/Person.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/BankoSaskaita.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="833">
-          <caret line="67" column="5" selection-start-line="67" selection-start-column="5" selection-end-line="67" selection-end-column="5" />
+        <state relative-caret-position="17">
+          <caret line="1" selection-start-line="1" selection-end-line="2" selection-end-column="39" />
         </state>
       </provider>
     </entry>
