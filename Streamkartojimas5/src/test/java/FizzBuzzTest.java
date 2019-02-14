@@ -8,8 +8,9 @@ class FizzBuzzTest extends FizzBuzz {
 
     @Test
     void fizzBuzzTest() {
-        final List<Object> objects = fizzBuzz(15);
+        final List<String > objects = fizzBuzz(15);
         assertEquals("Fizz", objects.get(2));
         assertEquals("FizzBuzz", objects.get(14));
+        assertEquals(true,fizzBuzz2(15).contains("FizzBuzz"));
     }
 }

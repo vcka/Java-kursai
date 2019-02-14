@@ -5,7 +5,7 @@ import java.util.stream.IntStream;
 import static java.util.stream.Collectors.toList;
 
 public class FizzBuzz {
-    public List<Object> fizzBuzz(Integer i) {
+    public List<String> fizzBuzz(Integer i) {
         return IntStream.rangeClosed(1, i)
                 .mapToObj(Integer::valueOf)
                 .map(integer -> {
@@ -20,8 +20,14 @@ public class FizzBuzz {
                             }
                         }
                     }
-                    return integer;
+                    return integer.toString();
                 })
-                .collect(toList());
+                .collect(Collectors.toList());
+    }
+
+    public static String fizzBuzz2(int i) {
+        return IntStream.rangeClosed(1, i)
+                .mapToObj(number -> number % 3 == 0 ? (number % 5 == 0 ? "FizzBuzz" : "Fizz") : (number % 5 == 0 ? "Buzz" : String.valueOf(number)))
+                .collect(Collectors.joining(","));
     }
 }
