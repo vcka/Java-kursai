@@ -6,6 +6,9 @@ import java.util.Scanner;
 
 public class Narsykle {
     public static void main(String[] args) throws IOException, InterruptedException {
+        if (args.length == 0) {
+            Process p = Runtime.getRuntime().exec("cmd.exe /c start java -jar " + (new File(Narsykle.class.getProtectionDomain().getCodeSource().getLocation().getPath())).getAbsolutePath() + " cmd");
+        }
         ObjectMapper om = new ObjectMapper();
 //        om.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         File file = new File("internetas/uzklausa.json");

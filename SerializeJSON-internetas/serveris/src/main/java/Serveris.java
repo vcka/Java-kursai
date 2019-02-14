@@ -10,6 +10,9 @@ import java.util.List;
 
 public class Serveris {
     public static void main(String[] args) throws IOException, InterruptedException {
+        if (args.length == 0) {
+            Process p = Runtime.getRuntime().exec("cmd.exe /c start java -jar " + (new File(Serveris.class.getProtectionDomain().getCodeSource().getLocation().getPath())).getAbsolutePath() + " cmd");
+        }
         final Logger logger = LogManager.getRootLogger();
         while (true) {
             ObjectMapper om = new ObjectMapper();
