@@ -4,15 +4,17 @@ public class Category implements Serializable {
     private Long categoryId = System.currentTimeMillis();
     private String name;
 
-    public Category(String name) {
+    Category(String name) {
         this.name = name;
+        System.out.println("Category created.");
     }
 
-    public Long getCategoryId() {
+    Long getCategoryId() {
         return categoryId;
     }
 
-    public String getName() {
+    String getName() {
         return name;
     }
 }
+

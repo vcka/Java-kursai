@@ -1,25 +1,34 @@
+import org.apache.commons.lang3.StringUtils;
+
+import java.awt.*;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class MenuUtils {
+class MenuUtils {
     private PEMService pemService = new PEMService();
     private static Scanner in = new Scanner(System.in);
     private int choice;
 
     private void printMenu() throws IOException, InterruptedException {
-        System.out.println("------------Menu-----------");
-        System.out.println("1. Add category");
-        System.out.println("2. Category list");
-        System.out.println("3. Expense entry");
-        System.out.println("4. Expense list");
-        System.out.println("5. Monthly expense list");
-        System.out.println("6. Yearly expense list");
-        System.out.println("7. Categorized expense list");
-        System.out.println("8. Delete expense by nr");
-        System.out.println("9. Delete category by nr");
-        System.out.println("0. Exit");
-        System.out.println("---------------------------");
-        System.out.println("Enter your choice: ");
+        printMenuHeader("Main menu");
+        printMyMenu2("Add category", "Category list", "Expense entry"
+                , "Expense list", "Monthly expense list", "Yearly expense list"
+                , "Categorized expense list", "Delete expense by nr"
+                , "Delete category by nr", "Exit");
+
+//        System.out.println("+------------Menu-------------+");
+//        System.out.println("| 1. Add category             |");
+//        System.out.println("| 2. Category list            |");
+//        System.out.println("| 3. Expense entry            |");
+//        System.out.println("| 4. Expense list             |");
+//        System.out.println("| 5. Monthly expense list     |");
+//        System.out.println("| 6. Yearly expense list      |");
+//        System.out.println("| 7. Categorized expense list |");
+//        System.out.println("| 8. Delete expense by nr     |");
+//        System.out.println("| 9. Delete category by nr    |");
+//        System.out.println("| 0. Exit                     |");
+//        System.out.println("+-----------------------------+");
+        System.out.print("Enter your choice: ");
         checkInput(in.nextLine());
     }
 
@@ -38,7 +47,7 @@ public class MenuUtils {
         System.exit(0);
     }
 
-    public void showMenu() throws IOException, InterruptedException {
+    void showMenu() throws IOException, InterruptedException {
         try {
             pemService.getRepo().categoryLoad();
             pemService.getRepo().expenseLoad();
@@ -46,7 +55,7 @@ public class MenuUtils {
             System.out.println("No data loaded.");
         }
 
-        while (true) {
+        do {
             printMenu();
             switch (choice) {
                 case 1:
@@ -98,11 +107,12 @@ public class MenuUtils {
                     onExit();
                     break;
             }
-        }
+        } while (true);
     }
-    public void checkInput(String input) throws IOException, InterruptedException {
 
-        if (input.matches("\\d{1}")) {
+    private void checkInput(String input) throws IOException, InterruptedException {
+
+        if (input.matches("\\d")) {
             choice = Integer.parseInt(input);
         } else {
             System.out.println("Wrong choice, try again.");
@@ -111,7 +121,24 @@ public class MenuUtils {
             printMenu();
         }
     }
+
     static void clearScreen() throws IOException, InterruptedException {
         new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+    }
+
+    static void printMyMenu2(String... menuCategories) {
+        int w = 50;
+
+        System.out.println(StringUtils.rightPad("+", w - 1, "-") + "+");
+        for (int i = 0; i < menuCategories.length; i++) {
+            System.out.println(StringUtils.center(StringUtils.rightPad(" " + (i + 1) + ". " + menuCategories[i], w - 2), w, "|"));
+        }
+        System.out.println(StringUtils.rightPad("+", w - 1, "-") + "+");
+    }
+    static void printMenuHeader (String header){
+        int w = 50;
+        System.out.println(StringUtils.rightPad("+", w - 1, "-") + "+");
+        System.out.println(StringUtils.center(StringUtils.center(header, w - 2), w, "|"));
+
     }
 }
