@@ -1,6 +1,4 @@
 import org.apache.commons.lang3.StringUtils;
-
-import java.awt.*;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -8,13 +6,14 @@ class MenuUtils {
     private PEMService pemService = new PEMService();
     private static Scanner in = new Scanner(System.in);
     private int choice;
+    private final static int frameWidth = 80;
 
     private void printMenu() throws IOException, InterruptedException {
         printMenuHeader("Main menu");
-        printMyMenu2("Add category", "Category list", "Expense entry"
-                , "Expense list", "Monthly expense list", "Yearly expense list"
-                , "Categorized expense list", "Delete expense by nr"
-                , "Delete category by nr", "Exit");
+        printMyMainMenu("Add category", "Categories list", "Expense entry"
+                , "Expenses list", "Monthly expenses list", "Yearly expenses list"
+                , "Categorized expenses list", "Delete expense (by number)"
+                , "Delete category (by number)", "Exit");
 
 //        System.out.println("+------------Menu-------------+");
 //        System.out.println("| 1. Add category             |");
@@ -126,19 +125,32 @@ class MenuUtils {
         new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
     }
 
-    static void printMyMenu2(String... menuCategories) {
-        int w = 50;
+    static void printMyMainMenu(String... menuCategories) {
+//        int frameWidth = 50;
 
-        System.out.println(StringUtils.rightPad("+", w - 1, "-") + "+");
+        final String x = StringUtils.rightPad("+", frameWidth - 1, "-") + "+";
+//        System.out.println(x);
         for (int i = 0; i < menuCategories.length; i++) {
-            System.out.println(StringUtils.center(StringUtils.rightPad(" " + (i + 1) + ". " + menuCategories[i], w - 2), w, "|"));
+            if (i == 9) {
+                System.out.println(StringUtils.center(StringUtils.rightPad(" " + "0. " + menuCategories[i], frameWidth - 2), frameWidth, "|"));
+            } else {
+                System.out.println(StringUtils.center(StringUtils.rightPad(" " + (i + 1) + ". " + menuCategories[i], frameWidth - 2), frameWidth, "|"));
+            }
         }
-        System.out.println(StringUtils.rightPad("+", w - 1, "-") + "+");
+        System.out.println(x);
     }
-    static void printMenuHeader (String header){
-        int w = 50;
-        System.out.println(StringUtils.rightPad("+", w - 1, "-") + "+");
-        System.out.println(StringUtils.center(StringUtils.center(header, w - 2), w, "|"));
 
+    static void printMenuHeader(String header) {
+        System.out.println(StringUtils.rightPad("+", frameWidth - 1, "-") + "+");
+        System.out.println(StringUtils.center(StringUtils.center(header, frameWidth - 2), frameWidth, "|"));
+        System.out.println(StringUtils.rightPad("+", frameWidth - 1, "-") + "+");
+    }
+    static void printMenuFooter() {
+        System.out.println(StringUtils.rightPad("+", frameWidth - 1, "-") + "+");
+    }
+    static void printMySubMenuContent(String... menuCategories) {
+        for (int i = 0; i < menuCategories.length; i++) {
+                System.out.println(StringUtils.center(StringUtils.rightPad(" " + menuCategories[i], frameWidth - 2), frameWidth, "|"));
+        }
     }
 }

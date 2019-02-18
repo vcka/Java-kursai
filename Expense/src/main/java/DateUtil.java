@@ -4,16 +4,16 @@ import java.util.Date;
 
 public class DateUtil {
     public static Date stringToDate(String dateAsString){
-        SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat df = new SimpleDateFormat("yyyy MM dd");
         try {
             return df.parse(dateAsString);
         } catch (ParseException e) {
-            e.printStackTrace();
+            System.out.print("Wrong date format. Try again: ");
             return null;
         }
     }
     public static String dateToString(Date date){
-        SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat df = new SimpleDateFormat("yyyy MM dd");
         return df.format(date);
 
     }
