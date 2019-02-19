@@ -54,21 +54,27 @@ public class ReportService {
     }
 
     public Map<String, Double> calculateCategoriesTotal() {
-        Map<String, Double> m = new TreeMap<>();
-        for (Expense expense : repo.getExpenseList()) {
-            Long categoryID = expense.getCategoryId();
-            String categoryName = getCategoryNameByID(categoryID);
-            if (m.containsKey(categoryName)) {
-                //then expense is all ready present for a category
-                Double total = m.get(categoryName);
-                total = total + expense.getAmount();
-                m.put(categoryName, total);
-            } else {
-                //this category is not added, add here
-                m.put(categoryName, expense.getAmount());
-            }
-        }
-        return m;
+        Map<String, Double> map = repo.getExpenseList().stream()
+                .collect(Collectors.groupingBy
+                        (expense -> getCategoryNameByID(expense.getCategoryId()),
+                                Collectors.summingDouble(Expense::getAmount)));
+
+//Old method
+//        Map<String, Double> m = new TreeMap<>();
+//        for (Expense expense : repo.getExpenseList()) {
+//            Long categoryID = expense.getCategoryId();
+//            String categoryName = getCategoryNameByID(categoryID);
+//            if (m.containsKey(categoryName)) {
+//                //then expense is all ready present for a category
+//                Double total = m.get(categoryName);
+//                total = total + expense.getAmount();
+//                m.put(categoryName, total);
+//            } else {
+//                //this category is not added, add here
+//                m.put(categoryName, expense.getAmount());
+//            }
+//        }
+        return new TreeMap<>(map);
     }
 
     public String getCategoryNameByID(Long categoryId) {

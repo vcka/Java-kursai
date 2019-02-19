@@ -110,7 +110,6 @@ class MenuUtils {
     }
 
     private void checkInput(String input) throws IOException, InterruptedException {
-
         if (input.matches("\\d")) {
             choice = Integer.parseInt(input);
         } else {
@@ -126,10 +125,7 @@ class MenuUtils {
     }
 
     static void printMyMainMenu(String... menuCategories) {
-//        int frameWidth = 50;
-
         final String x = StringUtils.rightPad("+", frameWidth - 1, "-") + "+";
-//        System.out.println(x);
         for (int i = 0; i < menuCategories.length; i++) {
             if (i == 9) {
                 System.out.println(StringUtils.center(StringUtils.rightPad(" " + "0. " + menuCategories[i], frameWidth - 2), frameWidth, "|"));
@@ -149,8 +145,8 @@ class MenuUtils {
         System.out.println(StringUtils.rightPad("+", frameWidth - 1, "-") + "+");
     }
     static void printMySubMenuContent(String... menuCategories) {
-        for (int i = 0; i < menuCategories.length; i++) {
-                System.out.println(StringUtils.center(StringUtils.rightPad(" " + menuCategories[i], frameWidth - 2), frameWidth, "|"));
+        for (String menuCategory : menuCategories) {
+            System.out.println(StringUtils.center(StringUtils.rightPad(" " + menuCategory, frameWidth - 2), frameWidth, "|"));
         }
     }
 }

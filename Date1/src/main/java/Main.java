@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
-        LocalDate birthDay = LocalDate.of(1980, 06, 24);
+        LocalDate birthDay = LocalDate.of(1920, 06, 24);
         LocalDate todaysDay = LocalDate.now();
         System.out.println("Metai: " + ChronoUnit.YEARS.between(birthDay, todaysDay));
         System.out.println("Menesiai: " + ChronoUnit.MONTHS.between(birthDay, todaysDay));
@@ -17,6 +17,7 @@ public class Main {
         Map<String, Long> collect = dates.entrySet().stream()
                 .collect(Collectors.groupingBy(Map.Entry::getValue, Collectors.counting()));
 
-        System.out.println(collect);
+//        System.out.println(collect);
+        collect.entrySet().forEach(System.out::println);
     }
 }

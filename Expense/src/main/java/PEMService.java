@@ -16,15 +16,25 @@ public class PEMService {
     void onCategorizedExpenseList() throws IOException, InterruptedException {
         MenuUtils.clearScreen();
         MenuUtils.printMenuHeader("Categorized expenses");
-        Map<String, Double> resultMap = reportService.calculateCategoriesTotal();
-        Set<String> categories = resultMap.keySet();
-        Double total = 0.0D;
-        for (String categoryName : categories) {
-            total = resultMap.get(categoryName) + total;
-            MenuUtils.printMySubMenuContent(categoryName + " : " + resultMap.get(categoryName));
-        }
+        AtomicReference<Double> total = new AtomicReference<>(0.0D);
+        reportService.calculateCategoriesTotal()
+                .forEach((k,v)->{
+                    total.updateAndGet(v1 -> v1 + v);
+                    MenuUtils.printMySubMenuContent(k + " - " + v);
+                });
         MenuUtils.printMenuFooter();
         System.out.println("Categories total: " + total);
+
+//Old method
+//        Map<String, Double> resultMap = reportService.calculateCategoriesTotal();
+//        Set<String> categories = resultMap.keySet();
+//        Double total = 0.0D;
+//        for (String categoryName : categories) {
+//            total = resultMap.get(categoryName) + total;
+//            MenuUtils.printMySubMenuContent(categoryName + " : " + resultMap.get(categoryName));
+//        }
+//        MenuUtils.printMenuFooter();
+//        System.out.println("Categories total: " + total);
     }
 
     void onYearlyExpenseList() throws IOException, InterruptedException {
@@ -34,7 +44,7 @@ public class PEMService {
         reportService.calculateYearlyTotal()
                 .forEach((k,v) -> {
                     total.updateAndGet(v1 -> v1 + v);
-                    MenuUtils.printMySubMenuContent(k + " | " + v);
+                    MenuUtils.printMySubMenuContent(k + " - " + v);
                 });
         MenuUtils.printMenuFooter();
         System.out.println("Total expenses sum: " + total);
@@ -55,7 +65,7 @@ public class PEMService {
         MenuUtils.clearScreen();
         MenuUtils.printMenuHeader("Monthly expenses");
         reportService.calculateMonthlyTotal()
-                .forEach((k, v) -> MenuUtils.printMySubMenuContent(k + " | " + v));
+                .forEach((k, v) -> MenuUtils.printMySubMenuContent(k + " - " + v));
         MenuUtils.printMenuFooter();
 
 //Old method
@@ -85,7 +95,8 @@ public class PEMService {
         MenuUtils.clearScreen();
         onCategoryList();
         System.out.print("Please enter the category to remove: ");
-        int nr = checkInput();
+        String input = in.nextLine();
+        int nr = checkInput(input);
         if (nr == 0) return;
         if (nr <= repo.getCategoryList().size()) {
             System.out.println("Category " + repo.getCategoryList().get(nr - 1).getName() + " will be removed.");
@@ -109,7 +120,8 @@ public class PEMService {
         MenuUtils.clearScreen();
         onExpenseList();
         System.out.print("Please enter the expense to remove: ");
-        int nr = checkInput();
+        String input = in.nextLine();
+        int nr = checkInput(input);
         if (nr == 0) return;
         if (nr <= repo.getExpenseList().size()) {
             System.out.println("Expense " + repo.getExpenseList().get(nr - 1).getDescription() + " will be removed.");
@@ -129,13 +141,14 @@ public class PEMService {
         onCategoryList();
 
         System.out.print("Choose category number: ");
-        int catChoice = checkInput();
+        String input = in.nextLine();
+        int catChoice = checkInput(input);
         if (catChoice == 0) return;
         if (catChoice <= repo.getCategoryList().size()) {
             Category selectedCategory = repo.getCategoryList().get(catChoice - 1);
             System.out.println("You chose: " + selectedCategory.getName());
             System.out.print("Please enter the amount: ");
-            double amount = parseToDouble();
+            double amount = parseToDouble(input);
             if (amount == 0D) return;
             System.out.print("Please write description: ");
             String remark = in.nextLine();
@@ -169,12 +182,10 @@ public class PEMService {
     void onCategoryList() throws IOException, InterruptedException {
         MenuUtils.clearScreen();
         MenuUtils.printMenuHeader("Categories");
-//        System.out.println("Listing categories");
         List<Category> categoryList = repo.getCategoryList();
         for (int i = 0; i < categoryList.size(); i++) {
             Category c = categoryList.get(i);
             MenuUtils.printMySubMenuContent((i + 1) + ". " + c.getName());
-//            System.out.println((i + 1) + ". " + c.getName() + ", " + c.getCategoryId());
         }
         MenuUtils.printMenuFooter();
     }
@@ -195,27 +206,25 @@ public class PEMService {
         }
     }
 
-    private int checkInput() {
-        String input = in.nextLine();
+    int checkInput(String input) {
         if (input.isEmpty()) return 0;
         if (input.matches("\\d")) {
             return Integer.parseInt(input);
         } else {
             System.out.print("Wrong choice, try again: ");
-            checkInput();
+            checkInput(in.nextLine());
         }
         return 0;
     }
 
-    private double parseToDouble() {
-        String input = in.nextLine();
+    public double parseToDouble(String input) {
         double value = 0D;
         try {
             value = Double.parseDouble(input);
         } catch (NumberFormatException e) {
             if (value == 0D) return value;
             System.out.print("Wrong sum, try again: ");
-            parseToDouble();
+            parseToDouble(in.nextLine());
         }
         return value;
     }
