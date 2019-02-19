@@ -14,19 +14,6 @@ class MenuUtils {
                 , "Expenses list", "Monthly expenses list", "Yearly expenses list"
                 , "Categorized expenses list", "Delete expense (by number)"
                 , "Delete category (by number)", "Exit");
-
-//        System.out.println("+------------Menu-------------+");
-//        System.out.println("| 1. Add category             |");
-//        System.out.println("| 2. Category list            |");
-//        System.out.println("| 3. Expense entry            |");
-//        System.out.println("| 4. Expense list             |");
-//        System.out.println("| 5. Monthly expense list     |");
-//        System.out.println("| 6. Yearly expense list      |");
-//        System.out.println("| 7. Categorized expense list |");
-//        System.out.println("| 8. Delete expense by nr     |");
-//        System.out.println("| 9. Delete category by nr    |");
-//        System.out.println("| 0. Exit                     |");
-//        System.out.println("+-----------------------------+");
         System.out.print("Enter your choice: ");
         checkInput(in.nextLine());
     }
@@ -124,7 +111,7 @@ class MenuUtils {
         new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
     }
 
-    static void printMyMainMenu(String... menuCategories) {
+    private void printMyMainMenu(String... menuCategories) {
         final String x = StringUtils.rightPad("+", frameWidth - 1, "-") + "+";
         for (int i = 0; i < menuCategories.length; i++) {
             if (i == 9) {

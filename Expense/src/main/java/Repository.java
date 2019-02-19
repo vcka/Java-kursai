@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-class Repository {
+public class Repository {
     private List<Expense> expenseList = new ArrayList<>();
     private List<Category> categoryList = new ArrayList<>();
     private static Repository repository;
@@ -25,11 +25,11 @@ class Repository {
         return categoryList;
     }
 
-    void setCategoryList(List<Category> categoryList) {
+    private void setCategoryList(List<Category> categoryList) {
         this.categoryList = categoryList;
     }
 
-    void setExpenseList(List<Expense> expenseList) {
+    private void setExpenseList(List<Expense> expenseList) {
         this.expenseList = expenseList;
     }
 
