@@ -9,16 +9,16 @@ public class DatabaseService {
 
     public static final String DATABASE_URL = "jdbc:mysql://db4free.net:3306/vcka_java1?useSSL=false";
     public static final String DATABASE_USER = "vcka_java1";
-    public static final String DABASE_PASS = "l0bzikas";
+    public static final String DATABASE_PASS = "l0bzikas";
     public static final String INSERT_PERSON = "INSERT into person (name, age) values(?,?)";
     public static final String UPDATE_PERSON_ID = "UPDATE person set age=? WHERE id=?";
-    public static final String DELETE_PERSON_ID = "DELETE FROM person WHERE id!=?";
+    public static final String DELETE_ALL_PERSONS_ID = "DELETE FROM person WHERE id!=?";
 
     Connection connection;
 
     public DatabaseService() {
         try {
-            connection = DriverManager.getConnection(DATABASE_URL, DATABASE_USER, DABASE_PASS);
+            connection = DriverManager.getConnection(DATABASE_URL, DATABASE_USER, DATABASE_PASS);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -74,7 +74,7 @@ public class DatabaseService {
 
     public void deletePerson(int personIdToDelete) {
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement(DELETE_PERSON_ID);
+            PreparedStatement preparedStatement = connection.prepareStatement(DELETE_ALL_PERSONS_ID);
             preparedStatement.setInt(1, personIdToDelete);
             int executionResults = preparedStatement.executeUpdate();
             if (executionResults == 0) {

@@ -13,13 +13,12 @@ public class PersonController {
     private static final String CSV_REGEX = ",";
     private List<Person> model;
 
-    public void processPerson(String personFileDir){
+    public void processPerson(String personFileDir) {
         readPersons(personFileDir);
         savePersons();
         updatePersonAgeToDouble();
-        deleteAllUsersExeptMaxAge();
+        deleteAllUsersExceptMaxAge();
     }
-
 
     private void readPersons(String personFile) {
         List<String> personLines = FileReaderService.readFile(personFile);
@@ -28,20 +27,28 @@ public class PersonController {
             model.add(new Person(splitLine[0], Integer.valueOf(splitLine[1])));
         }
     }
-    private void savePersons(){
+
+    private void savePersons() {
         if (!model.isEmpty()) {
             DatabaseService databaseService = new DatabaseService();
             databaseService.save(model);
             databaseService.closeConnection();
-        }else {
+        } else {
             throw new RuntimeException("No model found!");
         }
     }
 
-    private void updatePersonAgeToDouble(){
+    private void updatePersonAgeToDouble() {
         Person personIDWithMaxAge = getPersonIDWithMaxAge();
         DatabaseService databaseService = new DatabaseService();
-        databaseService.updatePerson(personIDWithMaxAge.getId(), personIDWithMaxAge.getAge()*2);
+        databaseService.updatePerson(personIDWithMaxAge.getId(), personIDWithMaxAge.getAge() * 2);
+        databaseService.closeConnection();
+    }
+
+    private void deleteAllUsersExceptMaxAge() {
+        Person personsIDSWithNotMaxAge = getPersonIDWithMaxAge();
+        DatabaseService databaseService = new DatabaseService();
+        databaseService.deletePerson(personsIDSWithNotMaxAge.getId());
         databaseService.closeConnection();
     }
 
@@ -49,12 +56,5 @@ public class PersonController {
         return model.stream()
                 .max(Comparator.comparingInt(Person::getAge))
                 .orElseThrow();
-    }
-
-    private void deleteAllUsersExeptMaxAge(){
-        Person personIDWithMaxAge = getPersonIDWithMaxAge();
-        DatabaseService databaseService = new DatabaseService();
-        databaseService.deletePerson(getPersonIDWithMaxAge().getId());
-        databaseService.closeConnection();
     }
 }
