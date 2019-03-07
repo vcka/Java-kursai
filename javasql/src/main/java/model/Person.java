@@ -12,5 +12,6 @@ public class Person {
     private String name;
     @NonNull
     private int age;
+    private String phoneNumber;
 
 }
