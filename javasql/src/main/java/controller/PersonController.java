@@ -17,6 +17,7 @@ public class PersonController {
         readPersons(personFileDir);
         savePersons();
         updatePersonAgeToDouble();
+        deleteAllUsersExeptMaxAge();
     }
 
 
@@ -38,11 +39,22 @@ public class PersonController {
     }
 
     private void updatePersonAgeToDouble(){
-        Person personIDWithMaxAge = model.stream()
-                .max(Comparator.comparingInt(Person::getAge))
-                .get();
+        Person personIDWithMaxAge = getPersonIDWithMaxAge();
         DatabaseService databaseService = new DatabaseService();
         databaseService.updatePerson(personIDWithMaxAge.getId(), personIDWithMaxAge.getAge()*2);
+        databaseService.closeConnection();
+    }
+
+    private Person getPersonIDWithMaxAge() {
+        return model.stream()
+                .max(Comparator.comparingInt(Person::getAge))
+                .orElseThrow();
+    }
+
+    private void deleteAllUsersExeptMaxAge(){
+        Person personIDWithMaxAge = getPersonIDWithMaxAge();
+        DatabaseService databaseService = new DatabaseService();
+        databaseService.deletePerson(getPersonIDWithMaxAge().getId());
         databaseService.closeConnection();
     }
 }

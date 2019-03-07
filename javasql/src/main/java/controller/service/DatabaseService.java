@@ -12,6 +12,8 @@ public class DatabaseService {
     public static final String DABASE_PASS = "l0bzikas";
     public static final String INSERT_PERSON = "INSERT into person (name, age) values(?,?)";
     public static final String UPDATE_PERSON_ID = "UPDATE person set age=? WHERE id=?";
+    public static final String DELETE_PERSON_ID = "DELETE FROM person WHERE id!=?";
+
     Connection connection;
 
     public DatabaseService() {
@@ -31,7 +33,7 @@ public class DatabaseService {
     }
 
     public void save(List<Person> persons) {
-        for (int i=0; i < persons.size(); i++) {
+        for (int i = 0; i < persons.size(); i++) {
             int personId = save(persons.get(i));
             persons.get(i).setId(personId);
         }
@@ -47,7 +49,7 @@ public class DatabaseService {
                 throw new SQLException("Could not insert: " + person.getName());
             }
             ResultSet generatedIds = preparedStatement.getGeneratedKeys();
-            if(generatedIds.next()){
+            if (generatedIds.next()) {
                 return generatedIds.getInt(1);
             }
         } catch (SQLException e) {
@@ -67,6 +69,20 @@ public class DatabaseService {
             }
         } catch (SQLException e) {
             e.printStackTrace(); //nerupi kol kas
+        }
+    }
+
+    public void deletePerson(int personIdToDelete) {
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(DELETE_PERSON_ID);
+            preparedStatement.setInt(1, personIdToDelete);
+            int executionResults = preparedStatement.executeUpdate();
+            if (executionResults == 0) {
+                throw new SQLException("Could not delete person ID: " + personIdToDelete);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace(); //nerupi kol kas
+
         }
     }
 }

@@ -4,14 +4,6 @@ public class Info {
     private int id;
     private String tekstas;
 
-    @Override
-    public String toString() {
-        return "Info{" +
-                "id=" + id +
-                ", tekstas='" + tekstas + '\'' +
-                '}';
-    }
-
     public Info(int id, String tekstas) {
         this.id = id;
         this.tekstas = tekstas;
@@ -45,5 +37,13 @@ public class Info {
         if (this.tekstas.contains(zodis)) {
             return true;
         } else return false;
+    }
+
+    @Override
+    public String toString() {
+        return "Info{" +
+                "id=" + id +
+                ", tekstas='" + tekstas + '\'' +
+                '}';
     }
 }
