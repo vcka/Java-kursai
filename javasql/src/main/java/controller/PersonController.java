@@ -4,6 +4,7 @@ import controller.service.DatabaseService;
 import lombok.AllArgsConstructor;
 import model.Person;
 import controller.service.FileReaderService;
+import view.PersonView;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -12,15 +13,23 @@ import java.util.stream.Collectors;
 public class PersonController {
     private static final String CSV_REGEX = ",";
     private List<Person> model;
+//    private PersonView view;
 
     public void processPerson(String personFileDir, String phoneFileDir) {
         readPersons(personFileDir);
         savePersons();
 //        updatePersonAgeToDouble();
 //        deleteAllUsersExceptMaxAge();
+
         setPhoneNumbersForPersons(readPhoneNumbers(phoneFileDir));
         savePhoneNumber();
-        filterAndPrintEmptyPhoneNumbers(model);
+
+        updateView();
+    }
+
+    public void updateView(){
+        PersonView view = new PersonView();
+        view.showPersons(model);
     }
 
     private void savePhoneNumber() {
