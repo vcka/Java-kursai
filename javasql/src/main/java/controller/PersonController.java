@@ -4,21 +4,65 @@ import controller.service.DatabaseService;
 import lombok.AllArgsConstructor;
 import model.Person;
 import controller.service.FileReaderService;
+import view.PersonView;
 
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @AllArgsConstructor
 public class PersonController {
     private static final String CSV_REGEX = ",";
     private List<Person> model;
+//    private PersonView view;
 
-    public void processPerson(String personFileDir) {
+    public void processPerson(String personFileDir, String phoneFileDir) {
         readPersons(personFileDir);
         savePersons();
-        updatePersonAgeToDouble();
-        deleteAllUsersExceptMaxAge();
+//        updatePersonAgeToDouble();
+//        deleteAllUsersExceptMaxAge();
+
+        setPhoneNumbersForPersons(readPhoneNumbers(phoneFileDir));
+        savePhoneNumber();
+
+        updateView();
     }
+
+    public void updateView(){
+        PersonView view = new PersonView();
+        view.showPersons(model);
+    }
+
+    private void savePhoneNumber() {
+        DatabaseService databaseService = new DatabaseService();
+        databaseService.savePhoneNumbers(filterEmptyPhoneNumbers(model));
+        databaseService.closeConnection();
+    }
+
+    private List<Person> filterEmptyPhoneNumbers(List<Person> persons) {
+        return persons.stream()
+                .filter(person -> person.getPhoneNumber() != null)
+                .collect(Collectors.toList());
+    }
+
+    private void filterAndPrintEmptyPhoneNumbers(List<Person> persons) {
+        persons.stream()
+                .filter(person -> person.getPhoneNumber() == null)
+                .forEach(System.out::println);
+//                .collect(Collectors.toList());
+    }
+
+    private void setPhoneNumbersForPersons(Map<String, String> phoneNumbersForPersons) {
+        phoneNumbersForPersons.keySet()
+                .forEach(name -> setPhoneNumbersForPersonByName(name, phoneNumbersForPersons.get(name)));
+    }
+
+    private void setPhoneNumbersForPersonByName(String name, String phoneNumber) {
+        model.stream().filter(person -> person.getName().equals(name))
+                .findFirst()
+                .get()
+                .setPhoneNumber(phoneNumber);
+    }
+
 
     private void readPersons(String personFile) {
         List<String> personLines = FileReaderService.readFile(personFile);
@@ -26,6 +70,16 @@ public class PersonController {
             String[] splitLine = line.split(CSV_REGEX);
             model.add(new Person(splitLine[0], Integer.valueOf(splitLine[1])));
         }
+    }
+
+    private Map<String, String> readPhoneNumbers(String phoneFile) {
+        Map<String, String> phoneNumbers = new HashMap<>();
+        List<String> phoneLines = FileReaderService.readFile(phoneFile);
+        for (String line : phoneLines) {
+            String[] splitLine = line.split(CSV_REGEX);
+            phoneNumbers.put(splitLine[1], splitLine[0]);
+        }
+        return phoneNumbers;
     }
 
     private void savePersons() {
@@ -57,4 +111,5 @@ public class PersonController {
                 .max(Comparator.comparingInt(Person::getAge))
                 .orElseThrow();
     }
+
 }

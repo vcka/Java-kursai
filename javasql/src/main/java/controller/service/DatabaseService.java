@@ -11,10 +11,11 @@ public class DatabaseService {
     public static final String DATABASE_USER = "vcka_java1";
     public static final String DATABASE_PASS = "l0bzikas";
     public static final String INSERT_PERSON = "INSERT into person (name, age) values(?,?)";
+    public static final String INSERT_PHONE_NUMBER = "INSERT into phonenr (number, person_id) values(?,?)";
     public static final String UPDATE_PERSON_ID = "UPDATE person set age=? WHERE id=?";
     public static final String DELETE_ALL_PERSONS_ID = "DELETE FROM person WHERE id!=?";
 
-    Connection connection;
+    private Connection connection;
 
     public DatabaseService() {
         try {
@@ -82,7 +83,26 @@ public class DatabaseService {
             }
         } catch (SQLException e) {
             e.printStackTrace(); //nerupi kol kas
+        }
+    }
 
+    public void savePhoneNumbers(List<Person> persons) {
+        for (Person person : persons) {
+            savePhoneNumber(person);
+        }
+    }
+
+    public void savePhoneNumber(Person person) {
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(INSERT_PHONE_NUMBER);
+            preparedStatement.setString(1, person.getPhoneNumber());
+            preparedStatement.setInt(2, person.getId());
+            int executionResults = preparedStatement.executeUpdate();
+            if (executionResults == 0) {
+                throw new SQLException("Could not insert: " + person.getName());
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 }
