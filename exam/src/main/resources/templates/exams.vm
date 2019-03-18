@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form method="post" action="/selectexam">
+<table>
+  #foreach( $exam in $exams )
+  <button name="examId" value="$exam.id">$exam.name</button>
+  #end
+</table>
+</form>
+
+<h2>Add exam:</h2>
+<form method="post" action="/addexam">
+    Enter exam name: <input type="text" name="name"><br>
+    <br>
+    <button>Submit</button>
+</form>
+
+<table>
+  #foreach( $user in $users )
+    <tr>
+    <td>$foreach.count</td>
+    <td>$user.id</td>
+    <td>$user.email</td>
+    </tr>
+  #end
+</table>
+
+</body>
+</html>
