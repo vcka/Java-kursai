@@ -1,5 +1,6 @@
 package model;
 
+import com.sun.istack.Nullable;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NonNull;
@@ -8,24 +9,21 @@ import lombok.RequiredArgsConstructor;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "phonenr")
 @Data
 @AllArgsConstructor
-public class Person {
-
+public class PhoneNumer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @NonNull
-    private String name;
+    @Nullable
+    private String phonenumber;
 
     @NonNull
-    private int age;
+    @JoinColumn(name ="fk_person_id")
+    private int person_id;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @PrimaryKeyJoinColumn
-    private PhoneNumer phoneNumer;
-
-    private Person(){
+    private PhoneNumer(){
     }
 }

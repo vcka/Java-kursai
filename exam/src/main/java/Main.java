@@ -46,7 +46,6 @@ public class Main {
         });
 
         app.post("/selectexam", ctx -> {
-            System.out.println(ctx.formParam("examName"));
             ctx.sessionAttribute("exam_id", ctx.formParam("examId"));
             ctx.redirect("/questions");
         });
@@ -61,7 +60,7 @@ public class Main {
             System.out.println("User id: " + ctx.sessionAttributeMap().get("userId"));
             System.out.println("Question id: " + ctx.formParam("questionid"));
             System.out.println("Answer id: " + ctx.formParam("answerid"));
-            ctx.result("Selecte " + ctx.formParam("answerid"));
+            ctx.result("Selected " + ctx.formParam("answerid"));
         });
 
         app.post("/login", ctx -> {
@@ -73,7 +72,6 @@ public class Main {
                 ctx.sessionAttribute("userId", userId);
                 ctx.redirect("/");
             } else {
-                ctx.result("/login");
                 ctx.redirect("/login");
             }
 
@@ -85,7 +83,7 @@ public class Main {
             if (id.equals("null")) {
                 ctx.redirect("/login");
             } else if (isAdmin.equals("true")) {
-                ctx.render("/templates/i.vm", model("users", userController.loadUsers(), "sesusr", ctx.sessionAttributeMap().get("userId")));
+                ctx.render("/templates/admin.vm", model("users", userController.loadUsers(), "sesusr", ctx.sessionAttributeMap().get("userId")));
                 System.out.println(ctx.sessionAttributeMap().get("userId"));
             } else {
                 ctx.redirect("/exams");
@@ -112,10 +110,5 @@ public class Main {
             ctx.sessionAttribute("userId", null);
             ctx.redirect("/");
         });
-    }
-
-    private static void form(Context ctx, Config config) {
-        FormClient formClient = config.getClients().findClient(FormClient.class);
-        ctx.render("/templates/loginForm.vm", model("callbackUrl", formClient.getCallbackUrl()));
     }
 }

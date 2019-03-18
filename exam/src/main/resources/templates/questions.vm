@@ -7,76 +7,50 @@
 </head>
 <body>
 <table>
-  #foreach( $exam in $exams )
-    <tr><td>$foreach.count</td><td>$exam.name</td></tr>
-    #foreach( $question in $questions )
-       #if( $exam.id == $question.exam_id)
-       <tr><td> $foreach.count</td><td>$question.question</td></tr>
-            #foreach( $answer in $answers )
-                #if( $exam.id == $answer.exam_id && $question.id == $answer.question_id)
-                <tr><td>$foreach.count</td><td> $answer.answer</td></tr>
-                #end
-            #end
-       #end
-    #end
-  #end
+
 </table>
 #foreach( $question in $questions )
-       <tr><td> $foreach.count</td><td>$question.question</td></tr>
-            #foreach( $answer in $answers )
-                #if( $question.id == $answer.question_id)
+<tr><td>$foreach.count. </td><td>$question.question</td></tr>
+        #foreach( $answer in $answers )
+             #if( $question.id == $answer.question_id)
                 <form id="$answer.question_id">
                     <input type="hidden" name="questionid" value="$answer.question_id">
                     <input type="hidden" name="answerid" value="$answer.id">
                     <button id="b$answer.id">$answer.answer</button>
                 </form>
-                #end
-            #end
-       #end
+             #end
+        #end
+#end
 
-
-
-<h2>Add exam:</h2>
-<form method="post" action="/addexam">
-    Enter exam name: <input type="text" name="name"><br>
-    <br>
-    <button>Submit</button>
-</form>
-
-<table>
-  #foreach( $user in $users )
-    <tr>
-    <td>$foreach.count</td>
-    <td>$user.id</td>
-    <td>$user.email</td>
-    </tr>
-  #end
-</table>
+<p>
 <form action="/logout" method="get">
   <button>Logout</button>
 </form>
+</p>
+
+<p>
+<form action="/" method="get">
+  <button>Back</button>
+</form>
+</p>
 
 </body>
 <script type="text/javascript">
 
 $("button").click(function() {
-
     var url = "/answer"; // the script where you handle the form input.
     var $form = $(this).parents('form:first').serialize();
-
     $.ajax({
            type: "POST",
            url: url,
            data: $form, // serializes the form's elements.
            success: function(data)
            {
-               alert(data); // show response from the php script.
+               //alert(data);  show response from the php script.
            }
          });
-
-		 document.getElementById(this.id).style.color = "red";
+    document.getElementById(this.id).style.color = "green";
     return false; // avoid to execute the actual submit of the form.
 });
 </script>
 </html>
-$.post('/answer', $('#answers').serialize())

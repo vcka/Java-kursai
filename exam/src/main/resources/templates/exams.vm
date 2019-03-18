@@ -14,22 +14,17 @@
 </table>
 </form>
 
-<h2>Add exam:</h2>
-<form method="post" action="/addexam">
-    Enter exam name: <input type="text" name="name"><br>
-    <br>
-    <button>Submit</button>
+<p>
+<form action="/logout" method="get">
+  <button>Logout</button>
 </form>
+</p>
 
-<table>
-  #foreach( $user in $users )
-    <tr>
-    <td>$foreach.count</td>
-    <td>$user.id</td>
-    <td>$user.email</td>
-    </tr>
-  #end
-</table>
+<p>
+<form action="/" method="get">
+  <button>Back</button>
+</form>
+</p>
 
 </body>
 </html>

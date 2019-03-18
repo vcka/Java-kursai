@@ -9,7 +9,11 @@ import model.Users;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import java.util.List;
 
 @Data
@@ -42,7 +46,14 @@ public class DatabaseService {
     }
 
     public List loadUsers() {
-        return session.createCriteria(Users.class).list();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<Users> query = builder.createQuery(Users.class);
+        Root<Users> root = query.from(Users.class);
+        query.select(root);
+        Query<Users> q=session.createQuery(query);
+        List<Users> users=q.getResultList();
+        return users;
+//        return session.createCriteria(Users.class).list();
     }
 
     public void deleteUser(Users user) {
@@ -54,7 +65,14 @@ public class DatabaseService {
     }
 
     public List loadExams() {
-        return session.createCriteria(Exams.class).list();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<Exams> query = builder.createQuery(Exams.class);
+        Root<Exams> root = query.from(Exams.class);
+        query.select(root);
+        Query<Exams> q=session.createQuery(query);
+        List<Exams> exams=q.getResultList();
+        return exams;
+//        return session.createCriteria(Exams.class).list();
     }
 
     public void saveExam(Exams exam){
@@ -62,10 +80,24 @@ public class DatabaseService {
     }
 
     public List loadExamsQuestions() {
-        return session.createCriteria(Questions.class).list();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<Questions> query = builder.createQuery(Questions.class);
+        Root<Questions> root = query.from(Questions.class);
+        query.select(root);
+        Query<Questions> q=session.createQuery(query);
+        List<Questions> questions=q.getResultList();
+        return questions;
+//        return session.createCriteria(Questions.class).list();
     }
 
     public List loadQuestionsAnswers(){
-        return session.createCriteria(Answers.class).list();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<Answers> query = builder.createQuery(Answers.class);
+        Root<Answers> root = query.from(Answers.class);
+        query.select(root);
+        Query<Answers> q=session.createQuery(query);
+        List<Answers> answers=q.getResultList();
+        return answers;
+//        return session.createCriteria(Answers.class).list();
     }
 }

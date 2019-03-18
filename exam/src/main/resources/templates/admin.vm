@@ -1,3 +1,4 @@
+<p>
 <h2>Remove user by email:</h2>
 <form method="post" action="/deleteuser">
     Choose user
@@ -6,12 +7,11 @@
         <option value="$user.email">$user.email</option>
     #end
     </select>
-          Email: <input type="text" name="fname"><br>
-          Password: <input type="text" name="lname"><br>
-    <br>
     <button>Submit</button>
 </form>
+</p>
 
+<p>
 <h2>Add user:</h2>
 <form method="post" action="/adduser">
     Enter user
@@ -20,27 +20,25 @@
     <br>
     <button>Submit</button>
 </form>
+</p>
 
-<h2>Check your reservation:</h2>
-<form method="get" action="/1">
-    Choose day
-    <select name="user">
-    #foreach ( $user in $users)
-        <option value="$user.id">$user.email</option>
-    #end
-    </select>
+<p>
+<h2>Add exam:</h2>
+<form method="post" action="/addexam">
+    Enter exam name: <input type="text" name="name"><br>
     <br>
     <button>Submit</button>
 </form>
+</p>
 
-<table>
-  #foreach( $user in $users )
-    <tr><td>$foreach.count</td><td>$user.email</td></tr>
-  #end
-</table>
-<table>
-<tr><td>$sesusr</td></tr>
-</table>
+<p>
 <form action="/logout" method="get">
   <button>Logout</button>
 </form>
+</p>
+
+<p>
+<form action="/" method="get">
+  <button>Back</button>
+</form>
+</p>

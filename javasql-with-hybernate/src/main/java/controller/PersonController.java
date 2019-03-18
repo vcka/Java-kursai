@@ -1,29 +1,39 @@
 package controller;
 
 import controller.service.DatabaseService;
-import lombok.AllArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import model.Person;
 import controller.service.FileReaderService;
+import model.PhoneNumer;
 
 import java.util.*;
 
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class PersonController {
+
     private static final String CSV_REGEX = ",";
+
+    @NonNull
     private List<Person> model;
+
+    private DatabaseService databaseService = new DatabaseService();
 //    private PersonView view;
 
     public void processPerson(String personFileDir, String phoneFileDir) {
+        databaseService.beginTransaction();
         readPersons(personFileDir);
         savePersons();
 
         updatePersonAgeToDouble();
         deleteAllUsersExceptMaxAge();
 
-//        setPhoneNumbersForPersons(readPhoneNumbers(phoneFileDir));
+        setPhoneNumbersForPersons(readPhoneNumbers(phoneFileDir));
 //        savePhoneNumber();
 
 //        updateView();
+        databaseService.commit();
+        databaseService.closeConnection();
     }
 
     private void readPersons(String personFile) {
@@ -36,11 +46,7 @@ public class PersonController {
 
     private void savePersons() {
         if (!model.isEmpty()) {
-            DatabaseService databaseService = new DatabaseService();
-            databaseService.beginTransaction();
-            databaseService.save(model);
-            databaseService.commit();
-            databaseService.closeConnection();
+            model.forEach(databaseService::save);
         } else {
             throw new RuntimeException("No model found!");
         }
@@ -48,11 +54,8 @@ public class PersonController {
 
     private void updatePersonAgeToDouble() {
         Person personIDWithMaxAge = getPersonIDWithMaxAge();
-        DatabaseService databaseService = new DatabaseService();
-        databaseService.beginTransaction();
-        databaseService.updatePerson(personIDWithMaxAge.getId(), personIDWithMaxAge.getAge() * 2);
-        databaseService.commit();
-        databaseService.closeConnection();
+        personIDWithMaxAge.setAge(personIDWithMaxAge.getAge() * 2);
+        databaseService.updatePerson(personIDWithMaxAge);
     }
 
     private Person getPersonIDWithMaxAge() {
@@ -62,12 +65,8 @@ public class PersonController {
     }
 
     private void deleteAllUsersExceptMaxAge() {
-        DatabaseService databaseService = new DatabaseService();
         model.remove(getPersonIDWithMaxAge());
-        databaseService.beginTransaction();
         model.forEach(databaseService::deletePerson);
-        databaseService.commit();
-        databaseService.closeConnection();
     }
 
 //    public void updateView(){
@@ -75,49 +74,49 @@ public class PersonController {
 ////        view.showPersons(model);
 //    }
 
-//    private void savePhoneNumber() {
-//        DatabaseService databaseService = new DatabaseService();
-//        databaseService.savePhoneNumbers(filterEmptyPhoneNumbers(model));
-//        databaseService.closeConnection();
-//    }
-//
-//    private List<Person> filterEmptyPhoneNumbers(List<Person> persons) {
-//        return persons.stream()
-//                .filter(person -> person.getPhoneNumber() != null)
+    private void savePhoneNumber() {
+        DatabaseService databaseService = new DatabaseService();
+        databaseService.savePhoneNumbers(filterEmptyPhoneNumbers(model));
+        databaseService.closeConnection();
+    }
+
+    private List<Person> filterEmptyPhoneNumbers(List<PhoneNumer> persons) {
+        return persons.stream()
+                .filter(person -> person.getPhoneNumber() != null)
+                .collect(Collectors.toList());
+    }
+
+    private void filterAndPrintEmptyPhoneNumbers(List<Person> persons) {
+        persons.stream()
+                .filter(person -> person.getPhoneNumber() == null)
+                .forEach(System.out::println);
 //                .collect(Collectors.toList());
-//    }
-//
-//    private void filterAndPrintEmptyPhoneNumbers(List<Person> persons) {
-//        persons.stream()
-//                .filter(person -> person.getPhoneNumber() == null)
-//                .forEach(System.out::println);
-////                .collect(Collectors.toList());
-//    }
-//
-//    private void setPhoneNumbersForPersons(Map<String, String> phoneNumbersForPersons) {
-//        phoneNumbersForPersons.keySet()
-//                .forEach(name -> setPhoneNumbersForPersonByName(name, phoneNumbersForPersons.get(name)));
-//    }
+    }
 
-//    private void setPhoneNumbersForPersonByName(String name, String phoneNumber) {
-//        model.stream().filter(person -> person.getName().equals(name))
-//                .findFirst()
-//                .get()
-//                .setPhoneNumber(phoneNumber);
-//    }
+    private void setPhoneNumbersForPersons(Map<String, String> phoneNumbersForPersons) {
+        phoneNumbersForPersons.keySet()
+                .forEach(name -> setPhoneNumbersForPersonByName(name, phoneNumbersForPersons.get(name)));
+    }
+
+    private void setPhoneNumbersForPersonByName(String name, String phoneNumber) {
+        model.stream().filter(person -> person.getName().equals(name))
+                .findFirst()
+                .get()
+                .setPhoneNumber(phoneNumber);
+    }
 
 
 
 
-//    private Map<String, String> readPhoneNumbers(String phoneFile) {
-//        Map<String, String> phoneNumbers = new HashMap<>();
-//        List<String> phoneLines = FileReaderService.readFile(phoneFile);
-//        for (String line : phoneLines) {
-//            String[] splitLine = line.split(CSV_REGEX);
-//            phoneNumbers.put(splitLine[1], splitLine[0]);
-//        }
-//        return phoneNumbers;
-//    }
+    private Map<String, String> readPhoneNumbers(String phoneFile) {
+        Map<String, String> phoneNumbers = new HashMap<>();
+        List<String> phoneLines = FileReaderService.readFile(phoneFile);
+        for (String line : phoneLines) {
+            String[] splitLine = line.split(CSV_REGEX);
+            phoneNumbers.put(splitLine[1], splitLine[0]);
+        }
+        return phoneNumbers;
+    }
 
 
 
