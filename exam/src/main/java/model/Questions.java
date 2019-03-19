@@ -19,8 +19,11 @@ public class Questions {
     private String question;
 
     @NonNull
-    @JoinColumn(name ="fk_exam_id")
-    private int exam_id;
+    @ManyToOne(cascade = CascadeType.ALL)
+//    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name ="exam_id")
+//    @MapsId
+    private Exams exam_id;
 
     private Questions(){
     }

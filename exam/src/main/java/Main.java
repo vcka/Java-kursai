@@ -1,15 +1,10 @@
 import java.util.*;
 
-import controller.AnswersController;
-import controller.ExamController;
-import controller.QuestionsController;
-import controller.UserController;
-import io.javalin.Context;
+import controller.*;
 import io.javalin.Javalin;
 import model.Exams;
+import model.UserAnswers;
 import model.Users;
-import org.pac4j.core.config.Config;
-import org.pac4j.http.client.indirect.FormClient;
 
 import static io.javalin.rendering.template.TemplateUtil.model;
 
@@ -20,6 +15,7 @@ public class Main {
         ExamController examController = new ExamController(new ArrayList<>());
         QuestionsController questionsController = new QuestionsController(new ArrayList<>());
         AnswersController answersController = new AnswersController(new ArrayList<>());
+        UserAnswerController userAnswerController = new UserAnswerController(new ArrayList<>());
 
         Javalin app = Javalin.create()
                 .port(7777)
@@ -46,7 +42,8 @@ public class Main {
         });
 
         app.post("/selectexam", ctx -> {
-            ctx.sessionAttribute("exam_id", ctx.formParam("examId"));
+            int examId = Integer.parseInt(ctx.formParam("examId"));
+            ctx.sessionAttribute("exam_id", examId);
             ctx.redirect("/questions");
         });
 
@@ -57,10 +54,11 @@ public class Main {
         });
 
         app.post("/answer", ctx -> {
-            System.out.println("User id: " + ctx.sessionAttributeMap().get("userId"));
-            System.out.println("Question id: " + ctx.formParam("questionid"));
-            System.out.println("Answer id: " + ctx.formParam("answerid"));
-            ctx.result("Selected " + ctx.formParam("answerid"));
+            int answerId = Integer.parseInt(String.valueOf(ctx.formParam("answerid")));
+            int questionId = Integer.parseInt(String.valueOf(ctx.formParam("questionid")));
+            int userId = Integer.parseInt(String.valueOf(ctx.sessionAttributeMap().get("userId")));
+            UserAnswers userAnswers = new UserAnswers(answerId, questionId, ctx.sessionAttribute("examid"), userId);
+            userAnswerController.addUserAnswer(userAnswers);
         });
 
         app.post("/login", ctx -> {
@@ -83,21 +81,27 @@ public class Main {
             if (id.equals("null")) {
                 ctx.redirect("/login");
             } else if (isAdmin.equals("true")) {
-                ctx.render("/templates/admin.vm", model("users", userController.loadUsers(), "sesusr", ctx.sessionAttributeMap().get("userId")));
-                System.out.println(ctx.sessionAttributeMap().get("userId"));
+                ctx.render("/templates/admin.vm",
+                        model("users", userController.loadUsers(),
+                                "sesusr", ctx.sessionAttributeMap().get("userId")));
             } else {
                 ctx.redirect("/exams");
             }
         });
 
         app.get("/exams", ctx ->
-                ctx.render("/templates/exams.vm", model("exams", examController.loadExams(), "users", userController.loadUsers())));
+                ctx.render("/templates/exams.vm",
+                        model("exams", examController.loadExams(),
+                        "users", userController.loadUsers())));
 
         app.get("/login", ctx ->
-                ctx.render("/templates/login.vm", model("exams", examController.loadExams(), "users", userController.loadUsers())));
+                ctx.render("/templates/login.vm",
+                        model("exams", examController.loadExams(),
+                                "users", userController.loadUsers())));
 
         app.get("/questions", ctx -> {
             int examId = Integer.parseInt(String.valueOf(ctx.sessionAttributeMap().get("exam_id")));
+            ctx.sessionAttribute("examid", examId);
             ctx.render("/templates/questions.vm",
                     model("exams", examController.loadExams(),
                             "questions", questionsController.findQuestionsByExamId(examId),
@@ -108,6 +112,7 @@ public class Main {
         app.get("/logout", ctx -> {
             ctx.sessionAttribute("admin", false);
             ctx.sessionAttribute("userId", null);
+            ctx.sessionAttribute("examid", null);
             ctx.redirect("/");
         });
     }

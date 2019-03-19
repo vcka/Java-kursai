@@ -15,7 +15,7 @@ public class AnswersController {
     private List<Answers> answersModel;
     private DatabaseService databaseService = new DatabaseService();
 
-    public List<Answers> loadAnswers(){
+    private List<Answers> loadAnswers() {
         databaseService.beginSessionAndTransaction();
         answersModel = databaseService.loadQuestionsAnswers();
         databaseService.closeConnection();
@@ -25,7 +25,7 @@ public class AnswersController {
     public List<Answers> findAnswersByExamId(int id) {
         loadAnswers();
         return answersModel.stream()
-                .filter(exams -> id == exams.getExam_id())
+                .filter(exams -> id == exams.getExam_id().getId())
                 .collect(Collectors.toList());
     }
 }

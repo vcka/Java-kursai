@@ -7,16 +7,16 @@ import lombok.RequiredArgsConstructor;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "answers")
+@Table(name = "wright_answer")
 @Data
 @RequiredArgsConstructor
-public class Answers {
+public class WrightAnswers {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @NonNull
-    private int answer;
+    private int answer_id;
 
     @NonNull
 //    @ManyToOne(cascade = CascadeType.ALL)
@@ -28,6 +28,6 @@ public class Answers {
     @JoinColumn(name ="exam_id")
     private Exams exam_id;
 
-    private Answers(){
+    private WrightAnswers(){
     }
 }
