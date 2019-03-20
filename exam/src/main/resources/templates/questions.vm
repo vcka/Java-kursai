@@ -11,15 +11,17 @@
 </table>
 #foreach( $question in $questions )
 <tr><td>$foreach.count. </td><td>$question.question</td></tr>
+
         #foreach( $answer in $answers )
              #if( $question.id == $answer.question_id)
-                <form id="$answer.question_id">
+                  <form id="$foreach.count">
                     <input type="hidden" name="questionid" value="$answer.question_id">
                     <input type="hidden" name="answerid" value="$answer.id">
                     <button id="b$answer.id">$answer.answer</button>
-                </form>
+                   </form>
              #end
         #end
+
 #end
 
 <p>

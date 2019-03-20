@@ -8,6 +8,7 @@ import model.Questions;
 import model.Users;
 
 import javax.persistence.EntityManager;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -16,7 +17,6 @@ public class QuestionsController {
     @NonNull
     private List<Questions> questionsModel;
     private DatabaseService databaseService = new DatabaseService();
-    EntityManager em;
 
     private List<Questions> loadQuestions() {
         databaseService.beginSessionAndTransaction();
@@ -27,6 +27,7 @@ public class QuestionsController {
 
     public List<Questions> findQuestionsByExamId(int id) {
         loadQuestions();
+        Collections.shuffle(questionsModel);
         return questionsModel.stream()
                 .filter(exams -> id == exams.getExam_id().getId())
                 .collect(Collectors.toList());

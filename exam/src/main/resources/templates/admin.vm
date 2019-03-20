@@ -32,12 +32,31 @@
 </p>
 
 <p>
-<form action="/logout" method="get">
-  <button>Logout</button>
+<h2>Add questions to exam:</h2>
+<form method="post" action="/addquestion">
+    Choose exam
+    <select name="exam">
+    #foreach( $exam in $exams )
+        <option value="$exam.id">$exam.name</option>
+
+    #end
+    </select>
+    <br>
+    Enter question:<br>
+    Question: <input type="text" name="question"><br>
+    Enter answers:<br>
+    Answer: <input type="text" name="answer"><input type="checkbox" name="wranswer" value="1"><br>
+    Answer: <input type="text" name="answer"><input type="checkbox" name="wranswer" value="2"><br>
+    Answer: <input type="text" name="answer"><input type="checkbox" name="wranswer" value="3"><br>
+    <br>
+    <button>Submit</button>
 </form>
 </p>
 
 <p>
+<form action="/logout" method="get">
+  <button>Logout</button>
+</form>
 <form action="/" method="get">
   <button>Back</button>
 </form>

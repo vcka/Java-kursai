@@ -1,6 +1,7 @@
 package model;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
@@ -8,20 +9,19 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "user_answer",
-        uniqueConstraints=
-        @UniqueConstraint(columnNames={"user_id", "answer_id", "question_id"}))
-
+@Table(name = "user_answer")
 @Data
 @RequiredArgsConstructor
+@NoArgsConstructor
 public class UserAnswers implements Serializable {
 
 //    @NonNull
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private String id;
 
     @NonNull
+//    @Id
     private int answer_id;
 
     @NonNull
@@ -35,10 +35,11 @@ public class UserAnswers implements Serializable {
     private int exam_id;
 
     @NonNull
+
 //    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="user_id")
     private int user_id;
 
-    private UserAnswers(){
-    }
+//    private UserAnswers(){
+//    }
 }

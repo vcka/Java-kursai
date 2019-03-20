@@ -20,10 +20,11 @@ public class UserAnswerController {
         return usersAnswersModel;
     }
 
-    public void addUserAnswer(UserAnswers usersAnswers){
+    public UserAnswers addUserAnswer(UserAnswers usersAnswers){
         databaseService.beginSessionAndTransaction();
-        databaseService.saveUsersAnswers(usersAnswers);
+        UserAnswers merged = databaseService.saveUsersAnswers(usersAnswers);
         databaseService.commit();
         databaseService.closeConnection();
+        return merged;
     }
 }

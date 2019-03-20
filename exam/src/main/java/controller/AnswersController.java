@@ -6,6 +6,7 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import model.Answers;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,6 +25,7 @@ public class AnswersController {
 
     public List<Answers> findAnswersByExamId(int id) {
         loadAnswers();
+        Collections.shuffle(answersModel);
         return answersModel.stream()
                 .filter(exams -> id == exams.getExam_id().getId())
                 .collect(Collectors.toList());

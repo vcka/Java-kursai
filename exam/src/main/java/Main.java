@@ -3,6 +3,7 @@ import java.util.*;
 import controller.*;
 import io.javalin.Javalin;
 import model.Exams;
+import model.Questions;
 import model.UserAnswers;
 import model.Users;
 
@@ -16,6 +17,7 @@ public class Main {
         QuestionsController questionsController = new QuestionsController(new ArrayList<>());
         AnswersController answersController = new AnswersController(new ArrayList<>());
         UserAnswerController userAnswerController = new UserAnswerController(new ArrayList<>());
+        UserAnswers userAnswers = new UserAnswers();
 
         Javalin app = Javalin.create()
                 .port(7777)
@@ -53,11 +55,31 @@ public class Main {
             ctx.redirect("/");
         });
 
+        app.post("/addquestion", ctx -> {
+//            Questions question = new Questions("", "");
+//            examController.addExam(exam);
+            System.out.println(ctx.formParams("question"));
+            System.out.println(ctx.formParams("answer"));
+            System.out.println(ctx.formParams("wranswer"));
+            ctx.redirect("/");
+        });
+
         app.post("/answer", ctx -> {
             int answerId = Integer.parseInt(String.valueOf(ctx.formParam("answerid")));
             int questionId = Integer.parseInt(String.valueOf(ctx.formParam("questionid")));
             int userId = Integer.parseInt(String.valueOf(ctx.sessionAttributeMap().get("userId")));
-            UserAnswers userAnswers = new UserAnswers(answerId, questionId, ctx.sessionAttribute("examid"), userId);
+            int examId = ctx.sessionAttribute("examid");
+            String id = ctx.sessionAttributeMap().get("userId").toString()
+                    .concat("-" + ctx.formParam("questionid")
+                            .concat("-" + examId));
+//            int id = Integer.parseInt(String.valueOf(ctx.sessionAttributeMap().get("id")));
+//            UserAnswers userAnswers = new UserAnswers(answerId, questionId, ctx.sessionAttribute("examid"), userId);
+            userAnswers.setAnswer_id(answerId);
+            userAnswers.setQuestion_id(questionId);
+            userAnswers.setExam_id(examId);
+            userAnswers.setUser_id(userId);
+            userAnswers.setId(id);
+
             userAnswerController.addUserAnswer(userAnswers);
         });
 
@@ -83,7 +105,8 @@ public class Main {
             } else if (isAdmin.equals("true")) {
                 ctx.render("/templates/admin.vm",
                         model("users", userController.loadUsers(),
-                                "sesusr", ctx.sessionAttributeMap().get("userId")));
+                                "sesusr", ctx.sessionAttributeMap().get("userId"),
+                                "exams", examController.loadExams()));
             } else {
                 ctx.redirect("/exams");
             }
@@ -92,7 +115,7 @@ public class Main {
         app.get("/exams", ctx ->
                 ctx.render("/templates/exams.vm",
                         model("exams", examController.loadExams(),
-                        "users", userController.loadUsers())));
+                                "users", userController.loadUsers())));
 
         app.get("/login", ctx ->
                 ctx.render("/templates/login.vm",

@@ -120,7 +120,8 @@ public class DatabaseService {
 //        return session.createCriteria(Answers.class).list();
     }
 
-    public void saveUsersAnswers(UserAnswers usersAnswers) {
-        session.merge(usersAnswers);
+    public UserAnswers saveUsersAnswers(UserAnswers usersAnswers) {
+        return  (UserAnswers) session.merge(usersAnswers);
+
     }
 }
