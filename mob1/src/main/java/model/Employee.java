@@ -39,7 +39,6 @@ public class Employee {
     @JoinColumn(name = "company")
     private Company company;
 
-    @Setter
     @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
     private Set<Contact> contacts = new HashSet<>();
 
@@ -57,4 +56,5 @@ public class Employee {
                 ", company=" + company +
                 '}';
     }
+
 }

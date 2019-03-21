@@ -1,0 +1,6 @@
+2019-03-21 19:18:04 APPLOGGER Main:24 - Test
+2019-03-21 19:18:04 WARN  C3P0ConnectionProvider:123 - HHH10001006: No JDBC Driver class was specified by property hibernate.connection.driver_class
+2019-03-21 19:20:35 APPLOGGER Main:24 - Test
+2019-03-21 19:20:35 WARN  C3P0ConnectionProvider:123 - HHH10001006: No JDBC Driver class was specified by property hibernate.connection.driver_class
+2019-03-21 19:35:47 APPLOGGER Main:28 - Test
+2019-03-21 19:35:48 WARN  C3P0ConnectionProvider:123 - HHH10001006: No JDBC Driver class was specified by property hibernate.connection.driver_class

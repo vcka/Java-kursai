@@ -23,4 +23,5 @@ public class Branch {
     @ManyToOne
     @JoinColumn(name = "company")
     private Company company;
+
 }

@@ -1,10 +1,21 @@
 import model.*;
+import org.apache.log4j.Logger;
+import org.apache.log4j.xml.DOMConfigurator;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import java.util.HashSet;
+
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaDelete;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+import java.util.List;
 
 public class Main {
+
+    private static Logger logger = Logger.getLogger(Main.class);
+    public static Session session;
+
     public static void main(String[] args) {
         Configuration configuration = new Configuration()
                 .addAnnotatedClass(Address.class)
@@ -13,14 +24,18 @@ public class Main {
                 .addAnnotatedClass(Contact.class)
                 .addAnnotatedClass(Branch.class);
 
+        DOMConfigurator.configure("log4j.xml");
+        logger.log(AppLogger.APPLOGGER, "Test");
+        logger.debug("WARN");
         SessionFactory sessionFactory = configuration.buildSessionFactory();
-        Session session = sessionFactory.openSession();
+        session = sessionFactory.openSession();
         session.getTransaction().begin();
 
         Address address = new Address("Gedo pr. 13","Vilnius");
         Address address1 = new Address("Liepojos 4", "Klaipeda");
         Employee employee = new Employee();
         Branch branch = new Branch();
+
 
 
 //        Employee employee1 = new Employee();
@@ -85,8 +100,15 @@ public class Main {
 //        session.saveOrUpdate(contact2);
 //        session.saveOrUpdate(employee1);
 //        session.saveOrUpdate(employee2);
-//
+
+//        Main.deleteAllEmployeesContactsByIdGreaterThan(1);
+//        Main.deleteAllEmployeesByIdGreaterThan(2);
+
         session.getTransaction().commit();
+//        session.flush();
+//        session.clear();
+        Main.find("Joris");
+
 
 //        CriteriaQuery<Contact> criteriaQuery = session.getCriteriaBuilder().createQuery(Contact.class);
 //        criteriaQuery.from(Contact.class);
@@ -115,5 +137,34 @@ public class Main {
         session.close();
 
 
+    }
+
+    static void deleteAllEmployeesByIdGreaterThan(long id) {
+        CriteriaBuilder cb = session.getCriteriaBuilder();
+        CriteriaDelete<Employee> delete = cb.createCriteriaDelete(Employee.class);
+        Root<Employee> employeeRoot = delete.from(Employee.class);
+        delete.where(cb.greaterThanOrEqualTo(employeeRoot.get("id"), id));
+        session.createQuery(delete).executeUpdate();
+    }
+
+    static void deleteAllEmployeesContactsByIdGreaterThan(long id) {
+        CriteriaBuilder cb = session.getCriteriaBuilder();
+        CriteriaDelete<Contact> delete = cb.createCriteriaDelete(Contact.class);
+        Root<Contact> employeeRoot = delete.from(Contact.class);
+        delete.where(cb.greaterThanOrEqualTo(employeeRoot.get("id"), id));
+        session.createQuery(delete).executeUpdate();
+    }
+
+    static void find(String name) {
+        session.getTransaction().begin();
+        CriteriaBuilder cb = session.getCriteriaBuilder();
+        CriteriaQuery<Employee> find = cb.createQuery(Employee.class);
+        Root<Employee> companyRoot = find.from(Employee.class);
+        find.where(cb.equal(companyRoot.get("name"), name));
+        Employee employee = session.createQuery(find).getSingleResult();
+        employee.setCompany(null);
+        session.save(employee);
+        session.delete(employee);
+        session.getTransaction().commit();
     }
 }
