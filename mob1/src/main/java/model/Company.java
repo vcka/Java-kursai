@@ -29,7 +29,7 @@ public class Company {
 
     @Setter
     @OneToMany(mappedBy = "company", cascade = CascadeType.ALL)
-    private Set<Branch> branches;
+    private Set<Branch> branches = new HashSet<>();
 
     public Set<Branch> getBranches(){
         return branches == null ? new HashSet<>() : branches;

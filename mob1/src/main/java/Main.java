@@ -47,13 +47,13 @@ public class Main {
         employee.setName("Joris");
         employee.setPosition("HR");
 
-        company.setBranches(new HashSet<>());
+//        company.setBranches(new HashSet<>());
         branch.setCompany(company);
         branch.setName("Vilniaus padalinys");
 
         company.getBranches().add(branch);
 
-        employee.setContacts(new HashSet<>());
+//        employee.setContacts(new HashSet<>());
         contact.setEmployee(employee);
         employee.getContacts().add(contact);
         employee.getContacts().forEach(System.out::println);
@@ -110,9 +110,10 @@ public class Main {
 //        session.close();
 
 //        System.out.println(contacts);
-//        results.forEach(System.out::println);
+//        results.forEach(System.out::println)
 
         session.close();
+
 
     }
 }

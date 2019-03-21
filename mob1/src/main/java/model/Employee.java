@@ -41,7 +41,7 @@ public class Employee {
 
     @Setter
     @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
-    private Set<Contact> contacts;
+    private Set<Contact> contacts = new HashSet<>();
 
     public Set<Contact> getContacts(){
         return contacts == null ? new HashSet<>() : contacts;
