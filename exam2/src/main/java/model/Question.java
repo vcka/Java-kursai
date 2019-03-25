@@ -1,67 +1,75 @@
 package model;
 
-import lombok.Data;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.Calendar;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "question")
+//@ToString
 @RequiredArgsConstructor
 public class Question {
+    @Setter@Getter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @Getter@Setter
+    @Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP", insertable = false, updatable = false)
+    private Calendar createdDate;
+
+
+    @Setter@Getter
     private String question;
 
-    @OneToOne
-    @JoinColumn(name = "write_answer")
-    private Answer wrightAnswer;
-
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "exam_id")
+    @Setter@Getter
+    @ManyToOne
     private Exam exam;
 
-    public long getId() {
-        return id;
+    @Getter
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "question", orphanRemoval = true)
+    private Set<Answer> answers = new HashSet<>();
+
+    @Getter@Setter
+    @OneToOne
+    private Answer right_answer;
+
+    public void addAnswer(Answer answer) {
+        answers.add(answer);
+        answer.setQuestion(this);
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void removeAnswer(Answer answer) {
+        answer.setQuestion(null);
+        this.answers.remove(answer);
     }
 
-    public String getQuestion() {
-        return question;
+    public void addRightAnswer(Answer answer) {
+        this.right_answer = answer;
+        right_answer.setQuestion(this);
     }
 
-    public void setQuestion(String question) {
-        this.question = question;
-    }
-
-    public Answer getWrightAnswer() {
-        return wrightAnswer;
-    }
-
-    public void setWrightAnswer(Answer wrightAnswer) {
-        this.wrightAnswer = wrightAnswer;
-    }
-
-    public Exam getExam() {
-        return exam;
-    }
-
-    public void setExam(Exam exam) {
-        this.exam = exam;
+    public void removeRightAnswer(Answer right_answer) {
+        if (right_answer != null) {
+            right_answer.setQuestion(null);
+        }
+        this.right_answer = null;
     }
 
     @Override
     public String toString() {
         return "Question{" +
                 "id=" + id +
-                ", question='" + question + '\'' +
-                ", wrightAnswer=" + wrightAnswer +
-                ", exam=" + exam +
+                ", createdDate=" + createdDate +
+                ", question=\n'" + question + '\'' +
+                ", \nanswers=" + answers +
+                ", \nright_answer=" + right_answer +
                 '}';
     }
 }

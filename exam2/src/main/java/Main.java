@@ -3,9 +3,6 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import java.util.Arrays;
-import java.util.List;
-
 public class Main {
     public static void main(String[] args) {
 
@@ -20,78 +17,105 @@ public class Main {
         Session session = sessionFactory.openSession();
         session.getTransaction().begin();
 
-        Exam exam = new Exam();
-        Question question = new Question();
-        Question question1 = new Question();
-        Answer answer = new Answer();
-        Answer answer1 = new Answer();
-        Answer answer2 = new Answer();
+        User user = new User();
+        user.setUserName("vcka");
+        user.setEmail("vcka@ministras.lt");
+        user.setPassword("l0pas");
 
-        Answer answer3 = new Answer();
-        Answer answer4 = new Answer();
-        Answer answer5 = new Answer();
         UserAnswer userAnswer = new UserAnswer();
+        user.addUserAnswer(userAnswer);
 
-
-        User user = new User("vcka", "vcka@ministras.lt", "l0pas", false);
-
+        Exam exam = new Exam();
         exam.setName("Matematika");
 
-        question.setExam(exam);
-        question.setQuestion("Kiek bus 2*2?");
-        answer.setAnswer("2");
-        answer1.setAnswer("0");
-        answer2.setAnswer("4");
+        Question question1 = new Question();
+        question1.setQuestion("Klausimas 1");
+        Question question2 = new Question();
+        question2.setQuestion("Klausimas 2");
 
-        List<Answer> answers = Arrays.asList(answer, answer1, answer2);
-        answers.forEach(an -> an.setQuestion(question));
-        question.setWrightAnswer(answer);
-        answers.forEach(ans -> Main.saveOrUpdate(ans, session));
+        exam.addQuestion(question1);
+        exam.addQuestion(question2);
 
+        Answer answer1 = new Answer();
+        answer1.setAnswer("Atsakymas 1");
+        Answer answer2 = new Answer();
+        answer2.setAnswer("Atsakymas 2");
+        Answer answer3 = new Answer();
+        answer3.setAnswer("Atsakymas 3");
+        Answer answer4 = new Answer();
+        answer4.setAnswer("Atsakymas 4");
+        Answer answer5 = new Answer();
+        answer5.setAnswer("Atsakymas 5");
+        Answer answer6 = new Answer();
+        answer6.setAnswer("Atsakymas 6");
 
-
-        question1.setExam(exam);
-        question1.setQuestion("Kas tu toks?");
-        answer3.setAnswer("Niekas");
-        answer4.setAnswer("Viskas");
-        answer5.setAnswer("Belekas");
-
-        List<Answer> answers2 = Arrays.asList(answer3, answer4, answer5);
-        answers2.forEach(an -> an.setQuestion(question));
-        question1.setWrightAnswer(answer5);
-        session.saveOrUpdate(question1);
-        answers2.forEach(ans -> Main.saveOrUpdate(ans, session));
-
-
-        userAnswer.setUser(user);
+        question1.addAnswer(answer1);
+        question1.addAnswer(answer2);
+        question1.addAnswer(answer3);
+        question2.addAnswer(answer4);
+        question2.addAnswer(answer5);
+        question2.addAnswer(answer6);
+        question1.addRightAnswer(answer1);
+        session.saveOrUpdate(exam);
+//        session.flush();
         userAnswer.setAnswer(answer1);
+        session.saveOrUpdate(user);
+//        session.saveOrUpdate(userAnswer);
 
-
-        session.save(user);
-        session.save(userAnswer);
         session.getTransaction().commit();
-
-//        System.out.println(question.getWrightAnswer());
-
-
 
         session.getTransaction().begin();
-        question.setWrightAnswer(answer1);
-        question1.setWrightAnswer(answer4);
-        answers.forEach(ans -> Main.saveOrUpdate(ans, session));
-        answers2.forEach(ans -> Main.saveOrUpdate(ans, session));
-//        System.out.println(question.getWrightAnswer());
-
-
-
-
+        System.out.println("Delete question1: " + question1.getQuestion());
+        exam.removeQuestion(question2);
+        question1.removeAnswer(answer2);
+//        session.delete(question2);
+//        session.saveOrUpdate(question1);
+//        session.flush();
         session.getTransaction().commit();
+//        Delete all
+
+//        session.getTransaction().begin();
+//        System.out.println("Deleting exam" + exam.getName());
+//        session.delete(exam);
+//        session.getTransaction().commit();
+//
+
+//        Update answer question
+        session.getTransaction().begin();
+        Answer answer7 = new Answer();
+
+        answer1.setAnswer("Naujas atsakymas");
+        System.out.println("Klausimo pakeitimas");
+//        session.saveOrUpdate(answer1);
+//        session.flush();
+//        userAnswer.setAnswer(answer3);
+        session.remove(user);
+//        session.saveOrUpdate(user);
+        session.getTransaction().commit();
+
+
+
+//        session.getTransaction().begin();
+////        session.flush();
+////        question1.setExam(exam);
+//        question1.addAnswer(answer7);
+//        session.saveOrUpdate(question1);
+//        session.getTransaction().commit();
+//        System.out.println(user.getUserAnswers());
+        userAnswer.getUser();
+
+        System.out.println(user.getUserAnswers().contains(question2.getRight_answer()));
+        System.out.println(question1.getExam());
         session.close();
-        System.out.println("Wright answer: " + question.getWrightAnswer());
-        System.out.println("User answer: " + userAnswer.getAnswer());
     }
 
-    static void saveOrUpdate(Answer answer, Session session) {
-        session.saveOrUpdate(answer);
+    public void addExam(String name){
+        Exam exam = new Exam();
+        exam.setName(name);
+        Main.
+    }
+
+    public void removeExam(Exam exam){
+        exam.
     }
 }
