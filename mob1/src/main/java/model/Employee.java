@@ -2,12 +2,14 @@ package model;
 
 import lombok.*;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.Cache;
 
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "employee")
 @NoArgsConstructor
 public class Employee {
 

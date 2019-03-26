@@ -9,6 +9,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaDelete;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import java.sql.Time;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
@@ -49,8 +50,8 @@ public class Main {
         session.saveOrUpdate(employee);
         session.getTransaction().commit();
 
-        Main.deleteEmployeesByNameLike("Jori");
-        Main.deleteEmployeesByNameLike("Jori");
+        Main.findByNameLike("Jori");
+        Main.findByNameLike("Jori");
 //        Main.deleteAllEmployeesByIdGreaterThan(employee.getId());
 //        session.getTransaction().commit();
         session.close();
@@ -75,25 +76,32 @@ public class Main {
         session.createQuery(delete).executeUpdate();
     }
 
-    static void deleteByNameLike(String name) {
+    static void findByNameLike(String name) {
         session.getTransaction().begin();
+        long start = System.currentTimeMillis();
         CriteriaBuilder cb = session.getCriteriaBuilder();
         CriteriaQuery<Employee> find = cb.createQuery(Employee.class);
         Root<Employee> employeeRoot = find.from(Employee.class);
         find.where(cb.like(employeeRoot.get("name"), "%"+name+"%"));
         List<Employee> employees = session.createQuery(find).getResultList();
-        employees.forEach(employee -> session.delete(employee));
+        session.getTransaction().commit();
+        long end = System.currentTimeMillis();
+        System.out.println(end - start);
+        employees.forEach(e -> session.evict(e));
     }
 
     static void deleteEmployeesByNameLike(String name) {
 //        session.getTransaction().begin();
         CriteriaBuilder cb = session.getCriteriaBuilder();
-        Date start = new Date(System.currentTimeMillis());
+        long start = System.currentTimeMillis();
         CriteriaDelete<Employee> delete = cb.createCriteriaDelete(Employee.class);
         Root<Employee> employeeRoot = delete.from(Employee.class);
         delete.where(cb.like(employeeRoot.get("name"), "%"+name+"%"));
 //        session.createQuery(delete).executeUpdate();
-        Date end = new Date(System.currentTimeMillis());
-        System.out.println(df.format(end.compareTo(start)));
+        long end = System.currentTimeMillis();
+        System.out.println(end - start);
+        System.out.println(session.getSessionFactory().getStatistics().getEntityFetchCount());
+        System.out.println(session.getSessionFactory().getStatistics().getSecondLevelCacheHitCount());
+
     }
 }
