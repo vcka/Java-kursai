@@ -38,20 +38,21 @@ public class Main {
         logger.debug("WARN");
         SessionFactory sessionFactory = configuration.buildSessionFactory();
         session = sessionFactory.openSession();
-        session.getTransaction().begin();
+//        session.getTransaction().begin();
 
-        Address address = new Address("Gedo pr. 13", "Vilnius");
+//        Address address = new Address("Gedo pr. 13", "Vilnius");
+//
+//        Employee employee = new Employee();
+//
+//        employee.setAddress(address);
+//        employee.setName("Joris");
+//
+//        session.saveOrUpdate(employee);
+//        session.getTransaction().commit();
 
-        Employee employee = new Employee();
-
-        employee.setAddress(address);
-        employee.setName("Joris");
-
-        session.saveOrUpdate(employee);
-        session.getTransaction().commit();
-
-        Main.findByNameLike("Jori");
-        Main.findByNameLike("Jori");
+        Main.findByNameLike("Gil");
+        Main.findByNameLike("Gil");
+        Main.findByNameLike("Gil");
 //        Main.deleteAllEmployeesByIdGreaterThan(employee.getId());
 //        session.getTransaction().commit();
         session.close();

@@ -9,7 +9,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "employee")
+@Cache(usage = CacheConcurrencyStrategy.READ_ONLY, region = "employee")
 @NoArgsConstructor
 public class Employee {
 
