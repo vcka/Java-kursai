@@ -18,6 +18,7 @@ public class Main {
         AnswersController answersController = new AnswersController(new ArrayList<>());
         UserAnswerController userAnswerController = new UserAnswerController(new ArrayList<>());
         UserAnswers userAnswers = new UserAnswers();
+        Questions questions = new Questions();
 
         Javalin app = Javalin.create()
                 .port(7777)
@@ -57,9 +58,11 @@ public class Main {
 
         app.post("/addquestion", ctx -> {
 //            Questions question = new Questions("", "");
-//            examController.addExam(exam);
-            System.out.println(ctx.formParams("question"));
-            System.out.println(ctx.formParams("answer"));
+            System.out.println(ctx.formParam("exam"));
+            List<String> question = ctx.formParams("question");
+            question.forEach(System.out::println);
+            List<String> answer = ctx.formParams("answer");
+            answer.forEach(System.out::println);
             System.out.println(ctx.formParams("wranswer"));
             ctx.redirect("/");
         });

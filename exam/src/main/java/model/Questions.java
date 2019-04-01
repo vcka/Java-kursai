@@ -22,9 +22,9 @@ public class Questions {
     @ManyToOne(cascade = CascadeType.ALL)
 //    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name ="exam_id")
-//    @MapsId
+    @MapsId
     private Exams exam_id;
 
-    private Questions(){
+    public Questions(){
     }
 }
