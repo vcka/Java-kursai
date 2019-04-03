@@ -122,6 +122,9 @@ public class DatabaseService {
 
     public UserAnswers saveUsersAnswers(UserAnswers usersAnswers) {
         return  (UserAnswers) session.merge(usersAnswers);
+    }
 
+    public Questions saveQuestion(Questions questions){
+        return  (Questions) session.merge(questions);
     }
 }

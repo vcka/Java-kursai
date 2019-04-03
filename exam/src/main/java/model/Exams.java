@@ -19,6 +19,6 @@ public class Exams {
     @NonNull
     private String name;
 
-    private Exams(){
+    public Exams(){
     }
 }

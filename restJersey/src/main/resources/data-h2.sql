@@ -1,1 +1,1 @@
-insert into person (id, first_name, last_name) values (1, 'Karolis', 'Ziemgalis');
+insert into person ( first_name, last_name) values ( 'Karolis', 'Ziemgalis');

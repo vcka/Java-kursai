@@ -1,30 +1,35 @@
 package model;
 
-import lombok.Data;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "questions")
-@Data
+//@Data
 @RequiredArgsConstructor
 public class Questions {
+    @Setter@Getter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Setter@Getter
     @NonNull
     private String question;
 
-    @NonNull
-    @ManyToOne(cascade = CascadeType.ALL)
-//    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name ="exam_id")
-    @MapsId
-    private Exams exam_id;
+    @Getter@Setter
+//    @NonNull
+//    @ManyToOne(cascade = CascadeType.ALL)
+////    @OneToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name ="exam_id")
+//    @MapsId
+    private int exam_id;
 
     public Questions(){
     }
+
+//    public void setExam_id(int exam) {
+//        this.exam_id.setId(exam);
+//    }
 }

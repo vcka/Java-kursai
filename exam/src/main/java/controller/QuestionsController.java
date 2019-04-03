@@ -29,7 +29,14 @@ public class QuestionsController {
         loadQuestions();
         Collections.shuffle(questionsModel);
         return questionsModel.stream()
-                .filter(exams -> id == exams.getExam_id().getId())
+                .filter(exams -> id == exams.getExam_id())
                 .collect(Collectors.toList());
+    }
+
+    public void saveQuestion(Questions questions){
+        databaseService.beginSessionAndTransaction();
+        databaseService.saveQuestion(questions);
+        databaseService.commit();
+        databaseService.closeConnection();
     }
 }

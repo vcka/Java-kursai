@@ -1,7 +1,17 @@
+import com.mysema.commons.lang.CloseableIterator;
+import com.mysema.query.hql.HQLQuery;
+import com.mysema.query.hql.hibernate.HibernateQuery;
+import com.mysema.query.hql.hibernate.sql.HibernateSQLQuery;
+import com.mysema.query.hql.jpa.JPAQuery;
+import com.mysema.query.sql.DerbyTemplates;
+import com.mysema.query.sql.SQLTemplates;
 import model.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+
+import javax.persistence.EntityManager;
+import java.util.List;
 
 public class Main {
 
@@ -22,6 +32,19 @@ public class Main {
         session.getTransaction().begin();
 
 
+//        HibernateQuery query = new HibernateQuery(session);
+
+        QExam qExam = new QExam("Belenkas");
+        HQLQuery query = new HibernateQuery (session);
+
+        List<Exam> matematika = query.from(qExam)
+                .where(qExam.name.eq("Matematika"))
+                .list(qExam);
+        System.out.println(matematika);
+
+        List<Exam> list = query.from(qExam).list(qExam);
+
+        System.out.println(list);
 
 
 //        User user = new User();
