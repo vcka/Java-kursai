@@ -1,0 +1,1 @@
+insert into reportsTo (city, first_name, last_name, mobile_number) values ( 'Panevezys', 'Karolis', 'Ziemgalis', '+3706487584');

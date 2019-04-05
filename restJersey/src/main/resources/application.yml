@@ -25,4 +25,4 @@ spring:
 logging:
   level:
     org:
-      springframework: WARN
+      springframework: ERROR
