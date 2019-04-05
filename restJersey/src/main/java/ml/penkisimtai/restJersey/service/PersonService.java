@@ -35,4 +35,14 @@ public class PersonService {
     public Person getPersonById(Long id){
         return personsRepository.findPersonById(id);
     }
+
+    public Person getPersonByFistName (String firstName){
+        return personsRepository.findPersonByFirstName(firstName);
+    }
+
+    public Person removePerson(long id){
+        Person person = personsRepository.findPersonById(id);
+        personsRepository.delete(person);
+        return person;
+    }
 }
