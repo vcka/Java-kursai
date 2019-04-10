@@ -1,17 +1,19 @@
-package model;
+package ml.penkisimtai.model;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
 @Table(name = "exam")
-@RequiredArgsConstructor
-public class Exam {
+@NoArgsConstructor
+//@RequiredArgsConstructor
+public class Exam{
 
     @Setter
     @Getter
@@ -37,12 +39,16 @@ public class Exam {
         this.questions.remove(question);
     }
 
+    @Setter@Getter
+    private Boolean isPublished = false;
+
     @Override
     public String toString() {
         return "Exam{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", questions=\n" + questions +
+                ", questions=" + questions +
+                ", isPublished=" + isPublished +
                 '}';
     }
 }

@@ -1,4 +1,4 @@
-package model;
+package ml.penkisimtai.model;
 
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
