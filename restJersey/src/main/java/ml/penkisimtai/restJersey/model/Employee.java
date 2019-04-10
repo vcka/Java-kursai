@@ -20,15 +20,16 @@ public class Employee {
 
     private String jobTitle;
 
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name="OFFICE_CODE")
     private Office officeCode;
 
-    @OneToOne
+    @ManyToOne
     private Employee reportsTo;
 
 
 
-    public Employee(String firstName, String lastName, String mobileNumber, String city) {
+    public Employee(String firstName, String lastName, String mobileNumber) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.mobileNumber = mobileNumber;
@@ -45,7 +46,7 @@ public class Employee {
 
     public void addOffice(Office office) {
         this.officeCode = office;
-        office.setEmployee(this);
+        office.addEmployee(this);
     }
 
     public String getFirstName() {
@@ -123,7 +124,7 @@ public class Employee {
                 ", email='" + email + '\'' +
                 ", jobTitle='" + jobTitle + '\'' +
                 ", officeCode=" + officeCode +
-                ", reportsTo=" + reportsTo +
+                ", reportsTo=" + reportsTo.getFirstName() +
                 '}';
     }
 }

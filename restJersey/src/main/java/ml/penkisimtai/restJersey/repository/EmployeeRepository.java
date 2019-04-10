@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 @Repository
-public interface EmployeeRepositrory extends CrudRepository<Employee, Long> {
+public interface EmployeeRepository extends CrudRepository<Employee, Long> {
     Employee findPersonById(Long id);
     Employee findPersonByFirstName(String firstName);
     @Modifying
