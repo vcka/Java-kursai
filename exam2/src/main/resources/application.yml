@@ -15,19 +15,17 @@ spring:
     driverClassName: org.h2.Driver
     url: jdbc:h2:mem:test;MODE=PostgreSQL
 
-
-
     hibernate:
       ddl-auto: create-drop
     show-sql: true
-    initialization-mode: always
+#    initialization-mode: always
 
   queries:
-    users-query: select email, password, active from user where email=?
-    roles-query: select u.email, r.role from user u inner join user_role ur on(u.user_id=ur.user_id) inner join role r on(ur.role_id=r.role_id) where u.email=?
+    users-query: select email, password, active from users where email=?
+    roles-query: select u.email, r.role from users u inner join user_role ur on(u.id=ur.user_id) inner join role r on(ur.role_id=r.role_id) where u.email=?
 
 
 logging:
   level:
     org:
-      springframework: DEBUG
+      springframework: ERROR

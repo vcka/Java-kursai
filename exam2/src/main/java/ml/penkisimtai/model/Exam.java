@@ -40,7 +40,7 @@ public class Exam{
     }
 
     @Setter@Getter
-    private Boolean isPublished = false;
+    private Boolean isPublished = true;
 
     @Override
     public String toString() {
