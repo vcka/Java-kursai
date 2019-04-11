@@ -4,6 +4,7 @@ import ml.penkisimtai.exceptions.ModelVerificationException;
 import ml.penkisimtai.model.Exam;
 import ml.penkisimtai.service.ExamService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
