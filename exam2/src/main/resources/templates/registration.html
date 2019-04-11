@@ -26,7 +26,7 @@
 		<div class="col-sm-4">
 			<h1 th:text="#{label.registration.title}" class="form-signin">form</h1>
 			<br/>
-			<form action="/user/registration" th:object="${user}" method="POST" enctype="utf8"  name="registrationForm" onsubmit="return validateRegistrationForm();">
+			<form action="/registration" th:object="${user}" method="POST" enctype="utf8"  name="registrationForm" onsubmit="return validateRegistrationForm();">
 			    <div>
 			    	<p th:each="error: ${#fields.errors('username')}" th:text="${error}">Validation error</p>
 			        <label th:text="#{label.user.username}" >username</label><br/>
