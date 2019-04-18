@@ -1,6 +1,7 @@
 package ml.penkisimtai.model;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
@@ -11,7 +12,6 @@ import java.util.Set;
 
 @Entity
 @Table(name = "question")
-//@ToString
 @RequiredArgsConstructor
 public class Question {
     @Setter@Getter

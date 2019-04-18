@@ -6,16 +6,26 @@ server:
 spring:
   main:
     banner-mode: "off"
-  h2:
-    console:
-      enabled: true
-      path: /h2
+#  h2:
+#    console:
+#      enabled: true
+#      path: /h2
+#  datasource:
+#    platform: h2
+#    driverClassName: org.h2.Driver
+#    url: jdbc:h2:mem:test;MODE=PostgreSQL
   datasource:
-    platform: h2
-    driverClassName: org.h2.Driver
-    url: jdbc:h2:mem:test;MODE=PostgreSQL
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://db4free.net:3306/examquiz?useSSL=false
+    username: examquiz
+    password: l0bzikas
+  jpa:
+#      hibernate.ddl-auto: create-drop
+#      generate-ddl: true
+#      show-sql: true
 
     hibernate:
+      dialect: org.hibernate.dialect.MySQL8Dialect
       ddl-auto: create-drop
     show-sql: true
 #    initialization-mode: always
