@@ -3,9 +3,10 @@ package ml.penkisimtai.controller;
 import ml.penkisimtai.module.Input;
 import ml.penkisimtai.exceptions.InputNotFoundException;
 import ml.penkisimtai.service.WebService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Collection;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/")
@@ -18,24 +19,37 @@ public class WebController {
         this.webService = webService;
     }
 
-    @RequestMapping("input/add")
-    public Input addInput(@RequestBody Input input) {
-        return webService.save(input);
+    @PostMapping("input/add")
+    public ResponseEntity<String> addInput(@RequestBody Input input) {
+
+        if (webService.existsByInput(input.getInput())) {
+            return ResponseEntity.status(409).body("Already exists");
+        } else {
+            webService.save(input);
+            return ResponseEntity.ok("Saved");
+        }
     }
 
-    @RequestMapping("inputs")
-    Collection<Input> getAllInputs() {
-        return webService.findAllRecords();
+    @GetMapping("inputs")
+    ResponseEntity<List<Input>> getAllInputs() {
+
+        return ResponseEntity.ok(webService.findAllRecords());
     }
 
-    @RequestMapping("input/{id}")
-    Input getInputById(@PathVariable Long id) {
-        return webService.findById(id)
-                .orElseThrow(() -> new InputNotFoundException(id));
+    @GetMapping("input/{id}")
+    ResponseEntity<Input> getInputById(@PathVariable Long id) {
+
+        return ResponseEntity.ok(webService.findById(id)
+                .orElseThrow(() -> new InputNotFoundException(id)));
     }
 
-    @RequestMapping("input/remove/{id}")
-    public String deleteInput(@PathVariable Long id) {
-        return webService.deleteById(id);
+    @DeleteMapping("input/remove/{id}")
+    public ResponseEntity<String> deleteInput(@PathVariable Long id) {
+        if (webService.existsByID(id)) {
+            webService.deleteById(id);
+            return ResponseEntity.ok("Deleted");
+        } else {
+            return ResponseEntity.badRequest().body("Does not exists");
+        }
     }
 }
